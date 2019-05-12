@@ -9,6 +9,6 @@ We secured 47th rank with 15478.000 points.So I'm going to discuss few challenge
 
 | Challenge Name  | Points |
 | ------------ |  ------- |
-| Mike's Marvelous Mystery Curves | 496 |
-| pwn3 | 387 |
-| VeggieTales | 489 |
+| [Mike's Marvelous Mystery Curves](https://github.com/saurav3199/CTF-writeups/blob/master/TAMUctf19/ecc.md) | 496 |
+| [pwn3](https://github.com/saurav3199/CTF-writeups/blob/master/TAMUctf19/pwn3.md) | 387 |
+| [VeggieTales](https://github.com/saurav3199/CTF-writeups/blob/master/TAMUctf19/VeggieTales.md) | 489 |
