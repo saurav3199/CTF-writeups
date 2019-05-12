@@ -9,6 +9,8 @@ __Note__ : The password to the AES192-CBC encrypted file is the shared key x and
 
 # Solution:
 
+> With the help of my teammate Lucas
+
 From the [pcap](https://github.com/saurav3199/CTF-writeups/blob/master/TAMUctf19/assets/key_exchange.pcap) file given we obtain prime p,a and b   
 ```
 Certificate:
