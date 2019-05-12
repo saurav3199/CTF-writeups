@@ -9,6 +9,8 @@ Rabin has received a text from someone special, but it's all in ciphertext and h
 
 # Solution:
 
+Simple classical wiener attack -> https://en.wikipedia.org/wiki/Wiener%27s_attack
+
 Thanks to [orisano](https://github.com/orisano) -> https://github.com/orisano/owiener
 
 
