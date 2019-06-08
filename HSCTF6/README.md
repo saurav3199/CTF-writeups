@@ -62,7 +62,7 @@ I will try to discuss all the solutions here:
 # MISC
 ## Verbose-:
 > description: 
-![vb](assets/misc/verbose.PNG)
+![vb](assets/misc/verbose.PNG =250x250)
 
 
 ## Hidden Flag-:
