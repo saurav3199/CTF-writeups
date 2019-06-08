@@ -1,6 +1,6 @@
 A High School CTF event.
 
-![score](assets/misc/score.PNG)
+![score](assets/misc/score.PNG?v=4&s=100)
 
 We tried to solve challenges as much as possible we can and as a reult we secured 23 position globally.
 
@@ -59,15 +59,18 @@ Challenge  Name | Points | Flag
 
 I will try to discuss all the solutions here:
 
+
 # MISC
 ## Verbose-:
 > description: 
-![vb](assets/misc/verbose.PNG =150x150)
 
+<img src="assets/misc/verbose.PNG" width="450px" height="400px" >
 
 ## Hidden Flag-:
 > description: 
-![hf](assets/misc/hiddenflag.png)
+
+
+<img src="assets/misc/hiddenflag.png" width="450px" height="400px" >
 
 
 ## 64+Word -:
