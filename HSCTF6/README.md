@@ -111,7 +111,7 @@ then there is the flag:`The flag is hsctf{b4s3_64_w0rd_s3arch3s_ar3_fu9?}`
 ## Broken gps-:
 > description:
 Input Format:
-<img src="assets/misc/brokengps1.png" width="450px" height="400px" >
+<img src="assets/misc/brokengps1.png" width="400px" height="600px" >
 
 A challenge to test some coding skills.
 
@@ -155,7 +155,7 @@ and here is the output:
 ### Solution:
 On opening file we see 
 
-<img src="assets/misc/brokengps1.png" width="450px" height="400px" >
+<img src="assets/misc/revd.png" width="250px" height="150px" >
 
 Reversing the file means reversing the hexes.So one liner will do that 
 
@@ -163,7 +163,7 @@ Reversing the file means reversing the hexes.So one liner will do that
 
 and on opening reversed file you see utf-8 chars
 
-<img src="assets/misc/brokengps1.png" width="450px" height="400px" >
+<img src="assets/misc/utf8.png" width="250px" height="100px" >
 
 Explanation:Why it happens that on the reverse bytes we can't see any characters, because 
 
