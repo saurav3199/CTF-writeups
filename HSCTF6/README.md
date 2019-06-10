@@ -50,15 +50,16 @@ So I will try to discuss the challenges i loved the most here:
 
 <img src="assets/misc/hiddenflag.png" width="450px" height="400px" >
 
- Solution:
- I open up my hexeditor HXD a great tool to change and view the hexes of file quite easily
+ ###Solution:
+ 
+ I opened up my hexeditor HXD a great tool to change and view the hexes of file quite easily
  I see messed up bytes in beginning
  
- <img src="assets/misc/hxd.png" width="450px" height="150px" >
+ <img src="assets/misc/hxd.png" width="550px" height="150px" >
  
  
  Then at the end of the file i see some text `key is invisible`
- So then i realise that the bytees must be xored with the key and we got it
+ So then i realise that the bytees must be xored with the key and we got it by this [script](assets/misc/fixchall.py)
  
 ```python
 import binascii
