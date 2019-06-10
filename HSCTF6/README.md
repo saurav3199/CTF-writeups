@@ -44,7 +44,7 @@ So I will try to discuss the challenges i loved the most here:
 > description: 
 
 
-<img src="assets/misc/simpleconversation.png" width="400px" height="400px" >
+<img src="assets/misc/simpleconversation.png" width="400px" height="450px" >
 
 
 ### Solution:
@@ -88,7 +88,7 @@ There you can see the flag:`hsctf{plz_u5e_pyth0n_3}`
 > description: 
 
 
-<img src="assets/misc/brokenrepl.png" width="400px" height="400px" >
+<img src="assets/misc/brokenrepl.png" width="450px" height="450px" >
 
  ### Solution:
  
@@ -250,7 +250,7 @@ So you can see the flag now:`hsctf{utf8_for_the_win}`
 ## JsonInfo-:
 > description: 
 
-<img src="assets/misc/jsoninfo.png" width="400px" height="400px" >
+<img src="assets/misc/jsoninfo.png" width="450px" height="550px" >
 
 ### Solution:
 Trying few thing we see that it accepts string and show that it's json or give the error otherwise.
