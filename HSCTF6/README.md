@@ -82,7 +82,7 @@ That's it :smiley:
 So from the description we see the word search and challenge name is 64+. So we need to do base64 word search of flag.
 Be sure as the base64 encode texts are multiple of 4 . So chose the texts accordingly.Here is the [Script](/assets/misc/ord64.py)
 
-```
+```python
 from  base64 import *
 file=open("64word.txt")
 data=file.read().split("\n")
@@ -118,7 +118,7 @@ A challenge to test some coding skills.
 ### Solution:
 Here's the [script](assets/misc/dir_gps.py) thats explain it all.
 
-```
+```python
 import math
 
 suffix=".txt"
