@@ -1,6 +1,6 @@
 A High School CTF event.
 
-![score](assets/misc/score.PNG?v=4&s=100)
+![score](assets/misc/score.PNG)
 
 We tried to solve challenges as much as possible we can and as a reult we secured 23 position globally.
 
@@ -33,31 +33,9 @@ Challenge  Name | Points | Flag
  | |
  | |
  | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
 
-I will try to discuss all the solutions here:
+
+So I will try to discuss the challenges i loved the most here:
 
 
 # MISC
@@ -72,7 +50,32 @@ I will try to discuss all the solutions here:
 
 <img src="assets/misc/hiddenflag.png" width="450px" height="400px" >
 
+ Solution:
+ I open up my hexeditor HXD a great tool to change and view the hexes of file quite easily
+ I see messed up bytes in beginning
+ 
+ <img src="assets/misc/hxd.png" width="450px" height="150px" >
+ 
+ 
+ Then at the end of the file i see some text `key is invisible`
+ So then i realise that the bytees must be xored with the key and we got it
+ 
+```python
+import binascii
+from itertools import cycle,izip
 
+f=open("chall.png")
+g=(f.read())
+key="invisible"
+ciphered = ''.join(chr(ord(c)^ord(k)) for c,k in izip(g, cycle(key)))
+l=open("fixed.png","a+")
+l.write(ciphered)
+
+```
+That's it :smiley:
+
+<img src="assets/misc/fixed.png" width="550px" height="250px" >
+ 
 ## 64+Word -:
 > description: 
 ![64](assets/misc/64word.png)
