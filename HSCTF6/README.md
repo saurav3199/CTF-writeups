@@ -50,12 +50,12 @@ So I will try to discuss the challenges i loved the most here:
 
 <img src="assets/misc/hiddenflag.png" width="450px" height="400px" >
 
- ###Solution:
+ ### Solution:
  
- I opened up my hexeditor HXD a great tool to change and view the hexes of file quite easily
- I see messed up bytes in beginning
+ I opened up my hexeditor HXD a great tool to change and view the hexes of file quite easily and
+ I see messed up bytes in beginning.
  
- <img src="assets/misc/hxd.png" width="550px" height="150px" >
+ <img src="assets/misc/hxd.png" width="550px" height="100px" >
  
  
  Then at the end of the file i see some text `key is invisible`
@@ -79,7 +79,37 @@ That's it :smiley:
  
 ## 64+Word -:
 > description: 
-![64](assets/misc/64word.png)
+
+<img src="assets/misc/64word.png" width="450px" height="400px" >
+
+### Solution :
+So from the description we see the word search and challenge name is 64+. So we need to do base64 word search of flag.
+Be sure as the base64 encode texts are multiple of 4 . So chose the texts accordingly.Here is the [Script](/assets/misc/ord64.py)
+
+```
+from  base64 import *
+file=open("64word.txt")
+data=file.read().split("\n")
+o=0
+while o<100:
+    g=data[o:]
+    for q in range(100):
+        j=q
+        s=""
+        for i in g:
+            if j>=len(i):
+                break
+            s+=i[j]
+            j+=1
+        possible_text=(b64decode(s[:4*(len(s)//4)]))
+        if "hsctf{" in possible_text[:6]:
+            end_ind=possible_text.find('}')+1
+            print("The flag is "+ possible_text[:end_ind] )
+            exit(0)
+    o+=1
+
+```
+
 
 
 ## Broken gps-:
