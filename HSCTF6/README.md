@@ -39,10 +39,6 @@ So I will try to discuss the challenges i loved the most here:
 
 
 # MISC
-## Verbose-:
-> description: 
-
-<img src="assets/misc/verbose.PNG" width="450px" height="400px" >
 
 ## Hidden Flag-:
 > description: 
@@ -58,8 +54,8 @@ So I will try to discuss the challenges i loved the most here:
  <img src="assets/misc/hxd.png" width="550px" height="100px" >
  
  
- Then at the end of the file i see some text `key is invisible`
- So then i realise that the bytees must be xored with the key and we got it by this [script](assets/misc/fixchall.py)
+ Then at the end of the file i see some text `key is invisible`.
+ So then i realise that the bytees must be xored with the key and we got it by this [script](assets/misc/fixchall.py).
  
 ```python
 import binascii
@@ -110,26 +106,68 @@ while o<100:
 
 ```
 
-
+then there is the flag:`The flag is hsctf{b4s3_64_w0rd_s3arch3s_ar3_fu9?}`
 
 ## Broken gps-:
-> description: 
-![b1](assets/misc/brokengps1.png)
-![b2](assets/misc/brokengps2.png)
+> description:
+Input Format:
+<img src="assets/misc/brokengps1.png" width="450px" height="400px" >
 
+A challenge to test some coding skills.
 
-## Keith_Bot-:
-> description: 
-![kb](assets/misc/keithbot.png)
+### Solution:
+Here's the [script](assets/misc/dir_gps.py) thats explain it all.
 
-## Locked_up-:
-> description: 
-![lu](assets/misc/lockedup.png)
+```
+import math
 
+suffix=".txt"
+flag=""
+dirs=["east","west","south","north","northwest","northeast","southeast","southwest"]
+for i in range(1,13):
+    up=0
+    right=0
+    filename=str(i)+suffix
+    f=open(filename)
+    h=(f.read()).split()
+    for q in range(int(h[0])):
+        pos=dirs.index(h[q+1])
+        if pos==0 or pos==5 or pos==6:
+            right+=1
+        if pos==1 or pos==4 or pos==7:
+            right-=1
+        if pos==3 or pos==4 or pos==5:
+            up+=1
+        if pos==2 or pos==6 or pos==7:
+            up-=1
+    flag+=chr(round(math.sqrt(up*up+right*right)*2)%26+97)
+print('hsctf{'+flag+'}')
+            
+```
+and here is the output:
+>hsctf{garminesuckz}
 
 ## RealReversal-:
 > description: 
-![rr](assets/misc/realreversal.png)
 
+<img src="assets/misc/brokengps1.png" width="450px" height="400px" >
 
+### Solution:
+On opening file we see 
 
+<img src="assets/misc/brokengps1.png" width="450px" height="400px" >
+
+Reversing the file means reversing the hexes.So one liner will do that 
+
+```open("reversed_reversed.txt", "wb").write(open("reversed.txt", "rb").read()[::-1])```
+
+and on opening reversed file you see utf-8 chars
+
+<img src="assets/misc/brokengps1.png" width="450px" height="400px" >
+
+Explanation:Why it happens that on the reverse bytes we can't see any characters, because 
+
+>UTF-8 is a variable width character encoding capable of encoding all 1,112,064 valid code points in Unicode using one to four 8-bit bytes.
+
+So on reversing 8 bytes it messed up as it reversed in two parts of four and four.Thus resulting in random chars.
+So you can see the flag now:`hsctf{utf8_for_the_win}`
