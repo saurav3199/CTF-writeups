@@ -38,7 +38,7 @@ Challenge  Name | Points | Flag
 So I will try to discuss the challenges i loved the most here:
 
 
-# MISC
+# **MISC**
 
 ## A Simple Conversation-:
 > description: 
@@ -315,7 +315,7 @@ Thank you for using JSON info!
 The flag is:`hsctf{JS0N_or_Y4ML}`
 
 
-# CRYPTO
+# **CRYPTO**
 
 ## Massive Rsa-:
 > description: 
