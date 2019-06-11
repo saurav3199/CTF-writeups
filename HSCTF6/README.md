@@ -379,6 +379,7 @@ So the flag is :`hsctf{square_number_time}`
 
 
 ### Solution:
+Here's the problem
 
 ```python
 import random
@@ -457,4 +458,9 @@ print(good_image)
 key = bake_it()
 print(final_baking(flag,key))
 ```
-great image .So at first we reversed the prepared treasure,
+great image .So at first we reversed the prepared treasure,but look closely here 
+```for k in range(len(good_food)):
+	good_food[i] += MY_LUCKY_NUMBER
+```
+Iterator is k but i is used that is constant So we need to just xor for all the numbers with the lucky number.
+
