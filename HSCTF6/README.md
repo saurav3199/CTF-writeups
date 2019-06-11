@@ -225,7 +225,7 @@ and here is the output:
 ## RealReversal-:
 > description: 
 
-<img src="assets/misc/realreversal.png" width="400px" height="450px" >
+<img src="assets/misc/realreversal.png" width="450px" height="450px" >
 
 ### Solution:
 On opening file we see 
@@ -250,7 +250,7 @@ So you can see the flag now:`hsctf{utf8_for_the_win}`
 ## JsonInfo-:
 > description: 
 
-<img src="assets/misc/jsoninfo.png" width="450px" height="550px" >
+<img src="assets/misc/jsoninfo.png" width="450px" height="600px" >
 
 ### Solution:
 Trying few thing we see that it accepts string and show that it's json or give the error otherwise.
