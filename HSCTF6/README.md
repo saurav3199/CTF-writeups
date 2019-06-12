@@ -464,7 +464,7 @@ for k in range(len(good_food)):
 	good_food[i] += MY_LUCKY_NUMBER
 ```
 Iterator is k but i is used that is constant So we need to just xor for all the numbers with the lucky number.Then to reverse this line `treasure.append(ord(food[i])*baked[i])` I  need to find `baked[i]` for which I see the random_mess function which is nothing other than [LCG](https://en.wikipedia.org/wiki/Linear_congruential_generator) itself.
-So we know the starting of flag is 'hsctf{'.Then accordingly we calculated first six values of the sequence and with the help of works of msm from p4team on lcg we used the script to get the flag .This might fail sometime because of gcd(modulo , numbers ) !=1 or modulus isn't prime .So we have to test this for a while to get the result.
+So we know the starting of flag is 'hsctf{'.Then accordingly we calculated first six values of the sequence and with the help of works of msm from p4team on lcg we used the [script](assets/crypto/fullscript.py) to get the flag .This might fail sometime because of gcd(modulo , numbers ) !=1 or modulus isn't prime .So we have to test this for a while to get the result.
 
 ```python
 from functools import reduce
