@@ -514,3 +514,97 @@ print(''.join(chr(i) for i in ans))
 
 If you want to test this for yourself here are the [used numbers](assets/crypto/ans.txt):-
 Here is the flag after we ran the script `hsctf{thiii111iiiss_isssss_yo0ur_b1rthd4y_s0ng_it_isnt_very_long_6621}` 
+
+# **REVERSAL**
+
+## I Thought Trig Was Really Easy-:
+> description: 
+
+
+<img src="assets/reversing/trigwaseasy.png" width="400px" height="450px" >
+
+
+### Solution:
+
+The problem is here as:
+
+```python
+import math
+
+def nice_math(x, y):
+    return round(x + y*math.cos(math.pi * x))
+
+lots_of_nums = lambda n,a:(lambda r:[*r,n-sum(r)])(range(n//a-a//2,n//a+a//2+a%2))
+
+def get_number(char):
+    return ord(char) - 96
+
+inp = input("Enter the text: ")
+
+out = []
+for i in range(0, len(inp)):
+    for j in lots_of_nums(nice_math(get_number(inp[i]), len(inp) - i), i + 1):
+        out.append(nice_math(j, i + 1))
+
+ans = [-25, 1, 10, 7, 4, 7, 2, 9, 3, 8, 1, 10,
+            3, -1, -8, 3, -6, 5, -4, 7, -5, 8, -3,
+            10, -1, 12, 10, 7, -6, 9, -4, 11, -2,
+            13, -2, -11, 6, -9, 8, -7, 10, -5, 12,
+            1, -12, 7, -10, 9, -8, 11, -6, 13, -4,
+            11, 6, -13, 8, -11, 10, -9, 12, -7, 14,
+            -5, 22, -16, 7, -14, 9, -12, 11, -10, 13,
+            -8, 15, -6, -2, 2, -21, 4, -19, 6, -17, 8,
+            -15, 10, -13, 12, -11, 5]
+if (out == ans):
+    print("That is correct! Flag: hsctf{" + inp + "}")
+else:
+    print("Nope sorry, try again!")
+```
+So we see lot_of_nums which is  very wierd trying to reverse the function looks difficult .So we see that each position of the flag depends upon the length of the flag and the character in this line `nice_math(get_number(inp[i]), len(inp) - i), i + 1`.
+
+So I tried to simply bruteforce it on the set of characters and we calculated the length of the flag on the basis of length of list ans `(((12+1)*(12+2)/2)-1)`.
+
+ 
+```python
+import math
+
+def nice_math(x, y):
+	return round(x + y*math.cos(math.pi * x))
+
+lots_of_nums = lambda n,a:(lambda r:[*r,n-sum(r)])(range(n//a-a//2,n//a+a//2+a%2))
+
+def get_number(char):
+    return ord(char) - 96
+charset="_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!:@#$%*-'"
+inp = ""
+flag=""
+l=1
+while l<=12:
+	x=0
+	while x<len(charset):
+		inp=flag+charset[x]+"b"*(12-l)
+		assert(len(inp)==12)
+		out = []
+		for i in range(0, len(inp)):
+		    for j in lots_of_nums(nice_math(get_number(inp[i]), len(inp) - i), i + 1):
+		        out.append(nice_math(j, i + 1))
+
+		ans = [-25, 1, 10, 7, 4, 7, 2, 9, 3, 8, 1, 10,
+		            3, -1, -8, 3, -6, 5, -4, 7, -5, 8, -3,
+		            10, -1, 12, 10, 7, -6, 9, -4, 11, -2,
+		            13, -2, -11, 6, -9, 8, -7, 10, -5, 12,
+		            1, -12, 7, -10, 9, -8, 11, -6, 13, -4,
+		            11, 6, -13, 8, -11, 10, -9, 12, -7, 14,
+		            -5, 22, -16, 7, -14, 9, -12, 11, -10, 13,
+		            -8, 15, -6, -2, 2, -21, 4, -19, 6, -17, 8,
+		            -15, 10, -13, 12, -11, 5]
+		g=((l+1)*(l+2)//2)-1
+		if(out[:g]==ans[:g]):
+			flag+=charset[x]
+			break
+		x+=1
+	l+=1
+
+print('The flag is:hsctf{'+flag+'}')
+```
+The flag is: `hsctf{:hyperthonk:}`
