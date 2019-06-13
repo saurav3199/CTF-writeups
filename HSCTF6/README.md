@@ -645,6 +645,11 @@ From this you can see that flag contains the data of flag file and then value of
 One thing to note that '==' comparison is used. This is where Type juggling comes. See for more [PHP Magic Tricks: Type Juggling](https://www.owasp.org/images/6/6b/PHPMagicTricks-TypeJuggling.pdf)
 
 So what we will try to do to pick up a string which prefix would be  '0e' for a reason then adding numbers ahead then calculate its md4 which will be equal to `/0e[0-9]{30}/`.So when the comparison is to be made then the strings will be treated as exponent of 0 (like 0e4=0). Thus both sides will be zero hence we will have our flag.
+```php
+<?php
+echo intval('0e123' == '0e245'); // result 1, which means TRUE
+echo "\n";
+```
 Here's the [script](assets/web/md4.py)
 
 ```python
