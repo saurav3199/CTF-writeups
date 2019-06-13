@@ -693,7 +693,7 @@ We are given a https://networked-password.web.chal.hsctf.com/ which prompts us t
 
 > Hint : You know the flag format
 
-<img src="assets/web/Capture4.PNG" width="650px" height="450px" >
+<img src="assets/web/Capture4.PNG" width="750px" height="200px" >
 
 So after attempting few times i got that every character adds 0.45-0.5 seconds.But running this script you need a better internet connection.So i tried running using online interpeter there's are ton of available. You can use https://repl.it/languages/python3 or https://codeanywhere.com/editor/ you need these because of their fast servers.
 
