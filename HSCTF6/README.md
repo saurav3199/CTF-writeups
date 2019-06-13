@@ -375,7 +375,7 @@ So the flag is :`hsctf{square_number_time}`
 > description: 
 
 
-<img src="assets/crypto/tuxkitchen.png" width="400px" height="450px" >
+<img src="assets/crypto/tuxkitchen.png" width="450px" height="450px" >
 
 
 ### Solution:
@@ -521,7 +521,7 @@ Here is the flag after we ran the script `hsctf{thiii111iiiss_isssss_yo0ur_b1rth
 > description: 
 
 
-<img src="assets/reversing/trigwaseasy.png" width="400px" height="450px" >
+<img src="assets/reversing/trigwaseasy.png" width="450px" height="450px" >
 
 
 ### Solution:
@@ -608,3 +608,69 @@ while l<=12:
 print('The flag is:hsctf{'+flag+'}')
 ```
 The flag is: `hsctf{:hyperthonk:}`
+
+# **WEB**
+
+## MD5-- :
+> description: 
+
+
+<img src="assets/web/md5.png" width="450px" height="450px" >
+
+
+### Solution:
+
+```php
+<?php
+$flag = file_get_contents("/flag");
+
+if (!isset($_GET["md4"]))
+{
+    highlight_file(__FILE__);
+    die();
+}
+
+if ($_GET["md4"] == hash("md4", $_GET["md4"]))
+{
+    echo $flag;
+}
+else
+{
+    echo "bad";
+}
+?>
+```
+From this you can see that flag contains the data of flag file and then value of md4 variable is set and after its value is compared to the md4(value) and then only we can obtain flag.
+
+One thing to note that '==' comparison is used. This is where Type juggling comes. See for more [PHP Magic Tricks: Type Juggling](https://www.owasp.org/images/6/6b/PHPMagicTricks-TypeJuggling.pdf)
+
+So what we will try to do to pick up a string which prefix would be  '0e' for a reason then adding numbers ahead then calculate its md4 which will be equal to `/0e[0-9]{30}/`.So when the comparison is to be made then the strings will be treated as exponent of 0 (like 0e4=0). Thus both sides will be zero hence we will have our flag.
+Here's the [script](assets/web/md4.py)
+
+```python
+import hashlib
+import re,sys
+from Crypto.Hash import MD4
+
+def breakit():
+    prefix="0e"
+    s=0
+    while 1:
+                s+=1
+                st=prefix+str(s)
+                hashed_s= hashlib.new('md4', st).hexdigest()
+                if hashed_s[:2]=="0e" and hashed_s[2:].isdigit():
+                    print "[+] found! md4( {} ) ---> {}".format(st, hashed_s)
+                    sys.exit(0)
+                if s%10000000==0:
+                    print("[+] %d iterations done"%(s))
+
+breakit()
+```
+Running this we get this after more than 250000000 iterations.
+> [+] found! md4( 0e251288019 ) ---> 0e874956163641961271069404332409
+
+Here's our flag `hsctf{php_type_juggling_is_fun}`
+
+
+
