@@ -1,5 +1,5 @@
 A High School CTF event.
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
+
 ![score](assets/misc/score.PNG)
 
 We tried to solve challenges as much as possible we can and as a reult we secured 23 position globally.
@@ -770,7 +770,7 @@ http://www.javadecompilers.com/ Use it for decompiling the given class file to [
 
 So lot of ifs for checking single characters of the flag one by one .
 So using regexes he extracted them and try to write a brute to choose them.
-![See this](assets/reversing/regexislife.mp4)
+[![Watch this video](https://imgur.com/a/d8Ntxwz)](assets/reversing/regexislife.mp4)
 
 So that's it to write a script to get the flag:smiley:.
 ```python
