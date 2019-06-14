@@ -1,5 +1,5 @@
 A High School CTF event.
-
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY)
 ![score](assets/misc/score.PNG)
 
 We tried to solve challenges as much as possible we can and as a reult we secured 23 position globally.
