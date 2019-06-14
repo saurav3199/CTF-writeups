@@ -564,9 +564,9 @@ if (out == ans):
 else:
     print("Nope sorry, try again!")
 ```
-So we see lot_of_nums which is  very wierd trying to reverse the function looks difficult .So we see that each position of the flag depends upon the length of the flag and the character in this line `nice_math(get_number(inp[i]), len(inp) - i), i + 1`.
+So we see lot_of_nums which is  very wierd trying to reverse the function looks difficult .So we see that each position of the flag depends upon the length of the flag and the character in this line `nice_math(get_number(inp[i]), len(inp) - i), i + 1`.That's nice_math function also looks difficult to reverse.
 
-So I tried to simply bruteforce it on the set of characters and we calculated the length of the flag on the basis of length of list ans `(((12+1)*(12+2)/2)-1)`.
+So I tried to simply bruteforce it on the set of characters and we calculated the length of the flag on the basis of length of list ans `(((12+1)*(12+2)/2)-1)`.This was faster to do so i did it!
 
  
 ```python
@@ -612,6 +612,228 @@ while l<=12:
 print('The flag is:hsctf{'+flag+'}')
 ```
 The flag is: `hsctf{:hyperthonk:}`
+
+
+## Tux Talk Show 2019:
+> description: 
+
+
+<img src="assets/reversing/tuxtalkshow.png" width="450px" height="450px" >
+
+
+### Solution:
+
+For this challenge it says about a lucky number.
+```
+Welcome to Tux Talk Show 2019!!!
+Enter your lucky number:
+```
+So we opened the ghidra for pseudocode:
+```c
+// modified a bit by me
+  int main(int argc,char **argv)
+
+{
+  long lVar1;
+  int rand;
+  time_t time;
+  basic_ostream *this;
+  long in_FS_OFFSET;
+  int input;
+  int i;
+  int acc;
+  int j;
+  int array [6];
+  basic_string output_string [32];
+  basic_istream output_stream [520];
+  long stack_cookie_i_guess;
+  
+  lVar1 = *(long *)(in_FS_OFFSET + 0x28);
+  basic_ifstream((char *)output_stream,0x1020b0);
+  time = time((time_t *)0x0);
+  srand((uint)time);
+                    /* try { // try from 0010127e to 001012c0 has its CatchHandler @ 00101493 */
+  this = operator<<<std--char_traits<char>>
+                   ((basic_ostream *)cout,"Welcome to Tux Talk Show 2019!!!");
+  operator<<((basic_ostream<char,std--char_traits<char>> *)this,endl<char,std--char_traits<char>>);
+  operator<<<std--char_traits<char>>((basic_ostream *)cout,"Enter your lucky number: ");
+  operator>>((basic_istream<char,std--char_traits<char>> *)cin,&input);
+  array[0] = 0x79;
+  array[1] = 0x12c97f;
+  array[2] = 0x135f0f8;
+  array[3] = 0x74acbc6;
+  array[4] = 0x56c614e;
+  array[5] = -0x1e;
+  i = 0;
+  while (i < 6) {
+    rand = rand();
+    array[(long)i] = array[(long)i] - (rand % 10 + -1);
+    i = i + 1;
+  }
+  acc = 0;
+  j = 0;
+  while (j < 6) {
+    acc = acc + array[(long)j];
+    j = j + 1;
+  }
+  if (acc == input) {
+    ...
+  }
+  return 0;
+}
+```
+here we see have 6 numbers in an array and its being added after subtracting this `(iVar1 % 10 + -1)`
+and if our assumed number is correct than it will open the flag for us.
+
+So two ways we can solve it ,during the team discussion over this challenge I told them that I can write brute as the numbers are in the small range i.e 51 .Meanwhile the other way as my teammate suggested was to attack the rand function . I would explann both here.
+
+```python
+from pwn import *
+
+a=[121, 1231231, 20312312, 122342342, 90988878, -30]
+host="rev.hsctf.com"
+port=6767
+
+m=sum(a)-48
+g=sum(a)+6 # setting the range
+inp=m+16    #this is where i am guessing the number and try to run multiple times in the loop
+while inp<g+1:
+    try:
+        s=remote(host,port)
+        print(s.recvline())
+        s.sendline(str(inp))
+        j=s.recvline()
+	if "hsctf{" in j:
+	    print(j)
+	    s.close()
+            exit(0)
+        print(j)
+    except:
+        s.close()
+        sleep(1)
+        continue
+```
+Luckily, I got the flag from there `hsctf{n1ce_j0b_w4th_r4ndom_gue33ing}`
+      
+The second approach is here, save it as time.c and compile to a.out:
+```c
+#include "stdio.h"
+#include "stdlib.h"
+
+int main(int argc, char *argv[]) {
+
+    time_t t;
+    srand((unsigned) time(&t));    
+
+    int array[6] = {0x79, 0x12c97f, 0x135f0f8, 0x74acbc6,  0x56c614e, -0x1e};
+
+    int acc = 0;
+    for(int i = 0; i < 6; i++) acc += array[(long)i] - (rand() % 10 + -1);
+
+    printf("%d\n", acc);
+    
+    return 0;
+}
+```
+and use it over this script 
+```python
+from pwn import *
+import time
+
+host = "rev.hsctf.com"
+port = 6767
+
+
+s = remote(host,port)
+p = process("./a.out")
+
+res = p.recvline()
+
+s.recvuntil(':')
+s.sendline(res)
+s.interactive()
+```
+That's it , An attack over the rand function while running the netcat server.
+
+
+## Bitecode -:
+> description: 
+
+
+<img src="assets/reversing/bitecode.png" width="450px" height="450px" >
+
+
+### Solution:
+This Challenge was done by Lucas my teammate So I will try to explain as far as i know as he is not writing writeups.
+
+http://www.javadecompilers.com/ Use it for decompiling the given class file to [java file](assets/reversing/BiteCode.java).
+
+So lot of ifs for checking single characters of the flag one by one .
+So using regexes he extracted them and try to write a brute to choose them.
+![See this](assets/reversing/regexislife.mp4)
+
+So that's it to write a script to get the flag:smiley:.
+```python
+b = ['A'] * 28
+for i in range(0xff):
+    if (i ^ 189074585) - 189074673 == 0:
+        b[0] = i
+    if (i ^ -227215135) - -227215214 == 0:
+        b[1] = i
+    if (i ^ 19240864) - 19240899 == 0:
+        b[2] = i
+    if (i ^ 245881291) - 245881279 == 0:
+        b[3] = i
+    if (i ^ 233391094) - 233390992 == 0:
+        b[4] = i
+    if (i ^ 56978353) - 56978378 == 0:
+        b[5] = i
+    if (i ^ -213838484) - -213838565 == 0:
+        b[6] = i
+    if (i ^ -231671677) - -231671605 == 0:
+        b[7] = i
+    if (i ^ -132473862) - -132473910 == 0:
+        b[8] = i
+    if (i ^ 143449065) - 143449053 == 0:
+        b[9] = i
+    if (i ^ 108102484) - 108102411 == 0:
+        b[10] = i
+    if (i ^ 71123188) - 71123073 == 0:
+        b[11] = i
+    if (i ^ 146096006) - 146096089 == 0:
+        b[12] = i
+    if (i ^ -173487738) - -173487628 == 0:
+        b[13] = i
+    if (i ^ -116507045) - -116507132 == 0:
+        b[14] = i
+    if (i ^ -68013365) - -68013319 == 0:
+        b[15] = i
+    if (i ^ 171414622) - 171414529 == 0:
+        b[16] = i
+    if (i ^ 94412444) - 94412524 == 0:
+        b[17] = i
+    if (i ^ 197453081) - 197453163 == 0:
+        b[18] = i
+    if (i ^ -50622153) - -50622201 == 0:
+        b[19] = i
+    if (i ^ 190140381) - 190140290 == 0:
+        b[20] = i
+    if (i ^ 77383944) - 77383996 == 0:
+        b[21] = i
+    if (i ^ -41590082) - -41590047 == 0:
+        b[22] = i
+    if (i ^ 61204303) - 61204283 == 0:
+        b[23] = i
+    if (i ^ -24637751) - -24637791 == 0:
+        b[24] = i
+    if (i ^ 61697107) - 61697122 == 0:
+        b[25] = i
+    if (i ^ 267894989) - 267895017 == 0:
+        b[26] = i
+print(''.join([chr(i) for i in b[:-1]]))
+```
+Here's the flag `hsctf{wH04_u_r_2_pr0_4_th1$}`
+
 
 # **WEB**
 
@@ -680,9 +902,6 @@ Running this we get this after more than 250000000 iterations.
 > [+] found! md4( 0e251288019 ) ---> 0e874956163641961271069404332409
 
 Here's our flag `hsctf{php_type_juggling_is_fun}`
-
-
-# **WEB**
 
 ## Networked Password -:
 > description: 
