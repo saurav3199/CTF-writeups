@@ -771,6 +771,7 @@ http://www.javadecompilers.com/ Use it for decompiling the given class file to [
 So lot of ifs for checking single characters of the flag one by one .
 So using regexes he extracted them and try to write a brute to choose them.
 [![Watch this video](https://imgur.com/x2U3taX.png)](https://youtu.be/rYOZHB_ABlo)
+<video src="assets/reversing/regexislife.mp4" width="320" height="200" controls preload></video>
 
 So that's it to write a script to get the flag:smiley:.
 ```python
