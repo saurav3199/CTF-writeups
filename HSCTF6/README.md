@@ -956,11 +956,13 @@ Glad they had the small flag.
 > description: 
 
 
-<img src="assets/forensics/doubletrouble.png" width="450px" height="450px" >
+<img src="assets/forensics/doubletrouble.png" width="450px" height="400px" >
 
 ### Solution:
 
 After downloading image you see both are quite similar .
+
+
 ![](assets/forensics/koala.png)    ![](assets/forensics/koala2.png)
 
 So, First thing i did to check hexes and I see bytes aren't similar . Then first thing first for a forensic challenge [stegsolve](https://github.com/zardus/ctf-tools/blob/master/stegsolve/install).
@@ -989,6 +991,7 @@ b2,b,msb,xy         .. text: "{sXsE4}8"
 b3,g,lsb,xy         .. text: "Wg8je^i<"
 b4,b,msb,xy         .. text: "%BE##cgv"
 ```
+
 Clearly we got the file link and passkey "whatdowehavehere" ,Jo was mistakenly arrived there.
 Checking for file we see
 
