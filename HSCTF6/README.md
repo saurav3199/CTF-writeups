@@ -17,24 +17,14 @@ Challenge  Name | Points | Flag
  |[Broken gps](#broken-gps-) | 280| hsctf{garminesuckz}
  |[Real Reversal](#realreversal-) | 274| hsctf{utf8_for_the_win}
  |[Json Info](#jsoninfo-) | 427| hsctf{JS0N_or_Y4ML}
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
- | |
+ |[Massive Rsa](#massive-rsa-) | 256 | hsctf{forg0t_t0_mult1ply_prim3s}
+ |[Really Secure Algorithm](#really-secure-algorithm-) | 314 | hsctf{square_number_time}
+ |[Tux Kitchen](#tux-kitchen-) | 401 | hsctf{thiii111iiiss_isssss_yo0ur_b1rthd4y_s0ng_it_isnt_very_long_6621}
+ |[I Thought Trig Was Really Easy](#i-thought-trig-was-really-easy-) | 374 |hsctf{:hyperthonk:}
+ |[Tux Talk Show 2019](#tux-talk-show-2019) | 406 | hsctf{n1ce_j0b_w4th_r4ndom_gue33ing}
+ |[Bitecode](#bitecode--) | 377|hsctf{wH04_u_r_2_pr0_4_th1$}
+ |[MD5--](#md5---) | 230 | hsctf{php_type_juggling_is_fun}
+ |[Networke Password](#networked-password--) | 314 | hsctf{sm0l_fl4g}
 
 
 So I will try to discuss the challenges i loved the most here:
