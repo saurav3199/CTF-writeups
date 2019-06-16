@@ -952,16 +952,17 @@ Glad they had the small flag.
 # **FORENSICS**
 
 ## Double Trouble :
+
 > description: 
 
 
-<img src="assets/web/forensics/doubletrouble.png" width="450px" height="450px" >
+<img src="assets/forensics/doubletrouble.png" width="450px" height="450px" >
 
 ### Solution:
 
 After downloading image you see both are quite similar .
 Koala.png            |  Koala2.png
-:-------------------------:|:-------------------------:
+-------------------------|-------------------------
 ![](assets/forensics/koala.png)  |  ![](assets/forensics/koala2.png)
 
 So, First thing i did to check hexes and I see bytes aren't similar . Then first thing first for a forensic challenge [stegsolve](https://github.com/zardus/ctf-tools/blob/master/stegsolve/install).
