@@ -947,3 +947,54 @@ exit(0)
 ```
 Here's the flag after so much running `hsctf{sm0l_fl4g}`
 Glad they had the small flag.
+
+
+# **FORENSICS**
+
+## Double Trouble :
+> description: 
+
+
+<img src="assets/web/forensics/doubletrouble.png" width="450px" height="450px" >
+
+### Solution:
+
+After downloading image you see both are quite similar .
+Koala.png            |  Koala2.png
+:-------------------------:|:-------------------------:
+![](assets/forensics/koala.png)  |  ![](assets/forensics/koala2.png)
+
+So, First thing i did to check hexes and I see bytes aren't similar . Then first thing first for a forensic challenge [stegsolve](https://github.com/zardus/ctf-tools/blob/master/stegsolve/install).
+
+Opening it on command line `java -jar stegsolve.jar`
+
+I tried image combiner to do AND , OR , XOR operations.But no luck.
+So i tried strings exiftool then reached zsteg and the output was:
+```
+streaker@DESKTOP-DS7FIJL:$ zsteg koala.png
+/usr/lib/ruby/2.5.0/open3.rb:199: warning: Insecure world writable dir /mnt/c in PATH, mode 040777
+imagedata           .. text: "\n\n\n\n\n\n !"
+b1,b,lsb,xy         .. text: "%q&),52+"
+b1,bgr,lsb,xy       .. text: "<https://www.mediafire.com/file/0n67qsooy8hcy30/hmmm.txt/fileA"
+b2,b,lsb,xy         .. text: "6Z?gdF$T"
+b2,b,msb,xy         .. text: "{sXsE4}8"
+b3,bgr,msb,xy       .. text: "\";Cc_$y)*I"
+b4,b,msb,xy         .. text: "%BE##cgv"
+streaker@DESKTOP-DS7FIJL:$ zsteg koala2.png
+/usr/lib/ruby/2.5.0/open3.rb:199: warning: Insecure world writable dir /mnt/c in PATH, mode 040777
+imagedata           .. text: "\n\n\n\n\n\n !"
+b1,b,lsb,xy         .. text: "%q&),52+"
+b1,bgr,lsb,xy       .. text: "passkey: whatdowehavehereJo"
+b2,b,lsb,xy         .. text: "6Z?gdF$T"
+b2,b,msb,xy         .. text: "{sXsE4}8"
+b3,g,lsb,xy         .. text: "Wg8je^i<"
+b4,b,msb,xy         .. text: "%BE##cgv"
+```
+Clearly we got the file link and passkey "whatdowehavehere" ,Jo was mistakenly arrived there.
+Checking for file we see `hmmm.txt: GPG symmetrically encrypted data (AES cipher)`
+So decrypting the file with the given key
+`gpg --output hmm.txt --decrypt hmmm.txt`
+we get the flag `hsctf{koalasarethecutestaren'tthey?}`
+
+ 
+ Note:Love to share the skywriting but for this challenge solving was so wierd that I have to guess a lot with xor's.
