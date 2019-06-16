@@ -1,8 +1,6 @@
 A High School CTF event.
 
-![score](assets/misc/score.PNG)
-
-We tried to solve challenges as much as possible we can and as a reult we secured 23 position globally.
+We tried to solve challenges as much as possible we can and as a result we secured 23rd position globally.
 
 ![image](assets/screencapture-ctf-hsctf-challenges-2019-06-08-12_20_54.png)
 
@@ -12,7 +10,7 @@ As you can see from the image we lacks in binary exploitation or pwn challenges 
 
 Challenge  Name | Points | Flag
 ------------ | ------------- | ---------------
- | |
+ [A Simple Conversation](#a-simple-conversation-)| 158| hsctf{plz_u5e_pyth0n_3}
  | |
  | |
  | |
