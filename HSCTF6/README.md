@@ -11,12 +11,12 @@ As you can see from the image we lacks in binary exploitation or pwn challenges 
 Challenge  Name | Points | Flag
 ------------ | ------------- | ---------------
  [A Simple Conversation](#a-simple-conversation-)| 158| hsctf{plz_u5e_pyth0n_3}
- | |
- | |
- | |
- | |
- | |
- | |
+ |[Broken Repl](#broken_repl-) | 407| hsctf{dont_you_love_parsers}
+ |[Hidden Flag](#hidden-flag-) | 290 | hsctf{n0t_1nv1s1bl3_an5m0r3?-39547632}
+ |[64+word](#64word--) | 421| hsctf{b4s3_64_w0rd_s3arch3s_ar3_fu9?}
+ |[Broken gps](#broken-gps-) | 280| hsctf{garminesuckz}
+ |[Real Reversal](#realreversal-) | 274| hsctf{utf8_for_the_win}
+ |[Json Info](#jsoninfo-) | 427| hsctf{JS0N_or_Y4ML}
  | |
  | |
  | |
@@ -183,7 +183,7 @@ while o<100:
 
 ```
 
-then there is the flag:`The flag is hsctf{b4s3_64_w0rd_s3arch3s_ar3_fu9?}`
+then there is the flag:`hsctf{b4s3_64_w0rd_s3arch3s_ar3_fu9?}`
 
 ## Broken gps-:
 > description:
