@@ -961,9 +961,7 @@ Glad they had the small flag.
 ### Solution:
 
 After downloading image you see both are quite similar .
-Koala.png            |  Koala2.png
--------------------------|-------------------------
-![](assets/forensics/koala.png)  |  ![](assets/forensics/koala2.png)
+![](assets/forensics/koala.png)    ![](assets/forensics/koala2.png)
 
 So, First thing i did to check hexes and I see bytes aren't similar . Then first thing first for a forensic challenge [stegsolve](https://github.com/zardus/ctf-tools/blob/master/stegsolve/install).
 
@@ -992,10 +990,15 @@ b3,g,lsb,xy         .. text: "Wg8je^i<"
 b4,b,msb,xy         .. text: "%BE##cgv"
 ```
 Clearly we got the file link and passkey "whatdowehavehere" ,Jo was mistakenly arrived there.
-Checking for file we see `hmmm.txt: GPG symmetrically encrypted data (AES cipher)`
+Checking for file we see
+
+`hmmm.txt: GPG symmetrically encrypted data (AES cipher)`
+
 So decrypting the file with the given key
+
 `gpg --output hmm.txt --decrypt hmmm.txt`
+
 we get the flag `hsctf{koalasarethecutestaren'tthey?}`
 
  
- Note:Love to share the skywriting but for this challenge solving was so wierd that I have to guess a lot with xor's.
+*Note*:Love to share the skywriting but for this challenge solving was so wierd that I have to guess a lot with xor's.
