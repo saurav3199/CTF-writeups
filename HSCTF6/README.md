@@ -344,7 +344,7 @@ So then I realize that choosing a large modulus so that it can be factorized int
 So the flag is :`hsctf{forg0t_t0_mult1ply_prim3s}`
 
 
-## Massive Rsa-:
+## Really Secure Algorithm-:
 > description: 
 
 
