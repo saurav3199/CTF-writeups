@@ -24,7 +24,7 @@ Challenge  Name | Points | Flag
  |[Tux Talk Show 2019](#tux-talk-show-2019) | 406 | hsctf{n1ce_j0b_w4th_r4ndom_gue33ing}
  |[Bitecode](#bitecode--) | 377|hsctf{wH04_u_r_2_pr0_4_th1$}
  |[MD5--](#md5---) | 230 | hsctf{php_type_juggling_is_fun}
- |[Networke Password](#networked-password--) | 314 | hsctf{sm0l_fl4g}
+ |[Networked Password](#networked-password--) | 314 | hsctf{sm0l_fl4g}
 
 
 So I will try to discuss the challenges i loved the most here:
