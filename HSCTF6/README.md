@@ -25,7 +25,7 @@ Challenge  Name | Points | Flag
  |[Bitecode](#bitecode--) | 377|hsctf{wH04_u_r_2_pr0_4_th1$}
  |[MD5--](#md5---) | 230 | hsctf{php_type_juggling_is_fun}
  |[Networked Password](#networked-password--) | 314 | hsctf{sm0l_fl4g}
-
+ |[Double Trouble](#double-trouble-)| 397| hsctf{koalasarethecutestaren'tthey?}
 
 So I will try to discuss the challenges i loved the *most* here:
 
@@ -1003,5 +1003,5 @@ So decrypting the file with the given key
 
 we get the flag `hsctf{koalasarethecutestaren'tthey?}`
 
- 
-*Note*:Love to share the skywriting but for this challenge solving was so wierd that I have to guess a lot with xor's.
+
+**Note**:Love to share the skywriting but for this challenge solving was so wierd that I have to guess a lot with xor's.
