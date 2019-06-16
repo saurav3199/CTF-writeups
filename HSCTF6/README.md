@@ -51,7 +51,7 @@ age = input("> ")
 sleep(1)
 
 ```
-Then I try to think that when it parses the input to input() then it tries to evaluate it first that is is it string , dictionary ,tuple or etc. So guessing the flag is on the server I try to send the arguments as yu can see.
+Then I try to think that when it parses the input to input() function then it tries to evaluate it first that is it string , dictionary ,tuple or etc.? So guessing the flag on the server I try to send the arguments as you can see.
 
 ```streaker@DESKTOP-DS7FIJL:$ nc misc.hsctf.com 9001
 Hello!
@@ -80,7 +80,7 @@ There you can see the flag:`hsctf{plz_u5e_pyth0n_3}`
 > description: 
 
 
-<img src="assets/misc/brokenrepl.png" width="450px" height="450px" >
+<img src="assets/misc/brokenrepl.png" width="450px" height="500px" >
 
  ### Solution:
  
@@ -97,7 +97,7 @@ except MemoryError: # we ran out of memory
     # lets remove the flag to clear up some memory
     print(flag) # log the flag so it is not lost
 ```
-You can see that you have to cause memoory error only. So my teammate Lucas looked on web and finds out [this](https://stackoverflow.com/questions/50709371/ast-literal-eval-memory-error-on-nested-list).
+You can see that you have to cause memory error only. So my teammate Lucas looked on web and finds out [this](https://stackoverflow.com/questions/50709371/ast-literal-eval-memory-error-on-nested-list).
 So you can see that we can cause memory error from nested list.Great learning :smiley:
 
 ```python
@@ -122,7 +122,7 @@ There is the flag:`hsctf{dont_you_love_parsers}`
  
  
  Then at the end of the file i see some text `key is invisible`.
- So then i realise that the bytees must be xored with the key and we got it by this [script](assets/misc/fixchall.py).
+ So then i realise that the bytes must be xored with the key and we got it by this [script](assets/misc/fixchall.py).
  
 ```python
 import binascii
@@ -147,7 +147,7 @@ That's it :smiley:
 
 ### Solution :
 So from the description we see the word search and challenge name is 64+. So we need to do base64 word search of flag.
-Be sure as the base64 encode texts are multiple of 4 . So chose the texts accordingly.Here is the [Script](/assets/misc/ord64.py)
+Be sure as the base64 encode texts are multiple of 4 . So choose the texts accordingly.Here is the [Script](/assets/misc/ord64.py)
 
 ```python
 from  base64 import *
@@ -217,7 +217,7 @@ and here is the output:
 ## RealReversal-:
 > description: 
 
-<img src="assets/misc/realreversal.png" width="450px" height="450px" >
+<img src="assets/misc/realreversal.png" width="450px" height="500px" >
 
 ### Solution:
 On opening file we see 
@@ -237,7 +237,7 @@ Explanation:Why it happens that on the reverse bytes we can't see any characters
 >UTF-8 is a variable width character encoding capable of encoding all 1,112,064 valid code points in Unicode using one to four 8-bit bytes.
 
 So on reversing 8 bytes it messed up as it reversed in two parts of four and four.Thus resulting in random chars.
-So you can see the flag now:`hsctf{utf8_for_the_win}`
+So you can see the flag now in reverse order:`hsctf{utf8_for_the_win}`
 
 ## JsonInfo-:
 > description: 
@@ -245,8 +245,8 @@ So you can see the flag now:`hsctf{utf8_for_the_win}`
 <img src="assets/misc/jsoninfo.png" width="450px" height="600px" >
 
 ### Solution:
-Trying few thing we see that it accepts string and show that it's json or give the error otherwise.
-So We quite stuck on thinking that what kind of error we have to produce.Then googling skills had to come as it is misc, so we found a beautiful [link](https://bzdww.com/article/164589/) and in section 5 we see yaml.load
+Trying few thing we see that it accepts string and shows that it's json or give the error otherwise.
+So we quite stuck on thinking that what kind of error we have to produce.Then googling skills had to come as it is misc, so we found a beautiful [link](https://bzdww.com/article/164589/) and in section 5 we see yaml.load
 and here is the warning:
 
 >Refer to the PyYAML documentation:
@@ -292,7 +292,7 @@ Please use a valid JSON array or object
 Thank you for using JSON info!
 
 ```
-SO yeah the vulnerability is here, Great!!!
+So, yeah the vulnerability is here, Great!!!
 
 ```
 streaker@DESKTOP-DS7FIJL:$ nc -q 1 misc.hsctf.com 9999
@@ -324,8 +324,8 @@ n = 9506871728212005404287298091539812411926069410851998897100065125297993155616
 e = 65537
 c = 358031506752691557002311547479988375196982422041486602674622689505841503255891193495423484852537391230787811575487947331018616578066891850752360030033666964406349205662189685086812466246139857474435922486026421639388596443953295273675167564381889788905773472245885677132773617051291379731995063989611049809121305468803148551770792609803351375571069366930457307762595216806633327492195442616272627113423143562166655122764898972565860928147259322712805600875994388377208017608434714747741249858321487547543201109467214209112271771033615033493406609653861223917338109193262445432032609161395100024272041503554476490575517100959892951805088735483927048625195799936311280172779052715645263075391841840633949032397082918665057115947698884582406130793211266028238396814146117158924884049679536261009188784571232730683037831940224049822081316216826346444136538278601803972530054219050666898301540575647763640218206611889707353810593843233814867745903144987805142815936160730054575462147126944741419094810558325854901931279755547624294325463528887326262902481099025253153222985717157272371423956465138892784879439141174797253720403065191378958340033965895823856879711180993895832306970105743588207727415495184380531676665121800713201192348940665501790550763379781627493441276077597720109700408848080221149485596419299548121287851605588246207568970548444975309457244824469026820421430723018384050095117420646392648577894835705672984626936461419833136418809219064810002991383584690376016818146065548853387107821627387061145659169570667682815001659475702299150425968489723185023734605402721950322618778361500790860436305553373620345189103147000675410970964950319723908599010461359668359916257252524290941929329344189971893558606572573665758188839754783710992996790764297302297263058216442742649741478512564068171266181773137060969745593802381540073397960444915230200708170859754559500051431883110028690791716906470624666328560717322458030544811229295722551849062570074938188113143167107247887066194761639893865268761243061406701905009155852073538976526544132556878584303616835564050808296190660548444328286965504238451837563164333849009829715536534194161169283679744857703254399005457897171205489516009277290637116063165415762387507832317759826809621649619867791323227812339615334304473447955432417706078131565118376536807024099950882628684498106652639816295352225305807407640318163257501701063937626962730520365319344478183221104445194534512033852645130826246778909064441514943
 ```
-It's really large So I thought to check anyways on ecc factoring for its to be prime and we got that its really a massive prime number.
-So then I realize that choosing a large modulus so that it can be factorized into p & q which should be unknown for the sake of security. But if its a prime number then we have to just calculate euler totient of n i.e. n-1 , and then calculate `d=modInverse(e,phi(n))` and tada we have private exponent, then just basic stuffs.
+It's really large. So I thought to check anyways on ecc factoring for its to be prime and we got that its really a massive prime number.
+So then I realize that choosing a large modulus so that it can be factorized into p & q which should be unknown for the sake of security. But if its a prime number then we have to just calculate euler totient of n i.e. n-1  to exploit it, and then calculate `d=modInverse(e,phi(n))` and tada! we have private exponent, then just basic stuffs.
 ```python
 >>> import binascii
 >>> binascii.unhexlify(hex(pow(c,d,n))[2:])
@@ -455,7 +455,10 @@ great image .So at first we reversed the prepared treasure,but look closely here
 for k in range(len(good_food)):
 	good_food[i] += MY_LUCKY_NUMBER
 ```
-Iterator is k but i is used that is constant So we need to just xor for all the numbers with the lucky number.Then to reverse this line `treasure.append(ord(food[i])*baked[i])` I  need to find `baked[i]` for which I see the random_mess function which is nothing other than [LCG](https://en.wikipedia.org/wiki/Linear_congruential_generator) itself.
+Iterator is k but i is used that is constant So we need to just xor for all the numbers with the lucky number.Then to reverse this line 
+`treasure.append(ord(food[i])*baked[i])` 
+
+I  need to find `baked[i]` for which I see the random_mess function which is nothing other than [LCG](https://en.wikipedia.org/wiki/Linear_congruential_generator) itself.
 So we know the starting of flag is 'hsctf{'.Then accordingly we calculated first six values of the sequence and with the help of works of msm from p4team on lcg we used the [script](assets/crypto/fullscript.py) to get the flag .This might fail sometime because of gcd(modulo , numbers ) !=1 or modulus isn't prime .So we have to test this for a while to get the result.
 
 ```python
@@ -670,10 +673,10 @@ So we opened the ghidra for pseudocode:
   return 0;
 }
 ```
-here we see have 6 numbers in an array and its being added after subtracting this `(iVar1 % 10 + -1)`
-and if our assumed number is correct than it will open the flag for us.
+here we have 6 numbers in an array and its being added after subtracting this `(iVar1 % 10 + -1)`
+and if our assumed number is correct than it will give the flag for us.
 
-So two ways we can solve it ,during the team discussion over this challenge I told them that I can write brute as the numbers are in the small range i.e 51 .Meanwhile the other way as my teammate suggested was to attack the rand function . I would explann both here.
+So two ways we can solve it ,during the team discussion over this challenge I told them that I can write brute as the numbers are in the small range i.e 51 .Meanwhile the other way as my teammate suggested was to attack the rand function . I would explain both here.
 
 ```python
 from pwn import *
@@ -757,7 +760,7 @@ This Challenge was done by Lucas my teammate So I will try to explain as far as 
 http://www.javadecompilers.com/ Use it for decompiling the given class file to [java file](assets/reversing/BiteCode.java).
 
 So lot of ifs for checking single characters of the flag one by one .
-So using regexes he extracted them and try to write a brute to choose them.
+So using regexes he extracted them and tried to write a brute to choose them.
 
 [Watch this video](https://youtu.be/rYOZHB_ABlo)
 [![Watch this video](https://imgur.com/x2U3taX.png)](https://youtu.be/rYOZHB_ABlo)
@@ -900,7 +903,7 @@ Here's our flag `hsctf{php_type_juggling_is_fun}`
 > description: 
 
 
-<img src="assets/web/networked_pass.png" width="450px" height="450px" >
+<img src="assets/web/networked_pass.png" width="450px" height="500px" >
 
 
 ### Solution:
