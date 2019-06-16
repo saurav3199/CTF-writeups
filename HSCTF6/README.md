@@ -27,7 +27,7 @@ Challenge  Name | Points | Flag
  |[Networked Password](#networked-password--) | 314 | hsctf{sm0l_fl4g}
 
 
-So I will try to discuss the challenges i loved the most here:
+So I will try to discuss the challenges i loved the *most* here:
 
 
 # **MISC**
