@@ -1,5 +1,6 @@
 A High School CTF event.
 
+
 We tried to solve challenges as much as possible we can and as a result we secured 23rd position globally.
 
 ![image](assets/screencapture-ctf-hsctf-challenges-2019-06-08-12_20_54.png)
@@ -213,6 +214,46 @@ print('hsctf{'+flag+'}')
 ```
 and here is the output:
 >hsctf{garminesuckz}
+
+another script as well written by teammate in a more formal way :
+```python
+import numpy as np
+from math import sqrt
+
+dict_direction = {
+    "north":     np.array([ 0.0, 1.0]),
+    "northeast": np.array([ 1.0, 1.0]),
+    "northwest": np.array([-1.0, 1.0]),
+    "east":      np.array([ 1.0, 0.0]),
+    "south":     np.array([ 0.0,-1.0]),
+    "southeast": np.array([ 1.0,-1.0]),
+    "southwest": np.array([-1.0,-1.0]),
+    "west":      np.array([-1.0, 0.0])
+}
+
+def distance(point1, point2):
+    x1, y1 = point1
+    x2, y2 = point2
+    return sqrt((x2 - x1)**2 + (y2 - y1)**2)
+
+flag = ""
+
+for filename in range(1,13):
+
+    position_wrong = np.array([0.0, 0.0])
+    position_right = np.array([0.0, 0.0])
+
+    with open(f"{filename}.txt") as f:
+        coords = f.read().strip().split('\n')[1:]
+
+        for coord in coords:
+            position_wrong += dict_direction[coord]
+            position_right -= dict_direction[coord]
+
+        flag += chr(ord('a') + round(distance(position_wrong, position_right)) % 26)
+
+print(f"hsctf{{{flag}}}")
+```
 
 ## RealReversal-:
 > description: 
