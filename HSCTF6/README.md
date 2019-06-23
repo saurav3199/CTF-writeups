@@ -1044,5 +1044,6 @@ So decrypting the file with the given key
 
 we get the flag `hsctf{koalasarethecutestaren'tthey?}`
 
+By the way we were first team to solve it.:smiley:
 
 **Note**:Love to share the skywriting but for this challenge solving was so wierd that I have to guess a lot with xor's.
