@@ -22,6 +22,8 @@ Description:
  
 While reading the description it looks like some brain teaser. I quickly googled it and I found this link http://www.mytechinterviews.com/12-identical-balls-problem . Then it's easier after it just we need to send the arguments only.
 
+![image](balls.png)
+
 Here's the [script](balls.py)
 
 
