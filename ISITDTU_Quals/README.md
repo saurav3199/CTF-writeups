@@ -1,7 +1,7 @@
 ISIDTU CTF -> https://ctf.isitdtu.com
 
 
-Enjoyed the CTF but due to lack of time and manpower we tried to give our best.Many challenges solved by us after the contest finished.
+Enjoyed the CTF but we tried to give our best as there was limited time. Many challenges solved by us after the contest finished.
 
 I will share some of the writeups that I found interesting.
 
