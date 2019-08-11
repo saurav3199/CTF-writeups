@@ -77,6 +77,8 @@ No result it went further around 100000 bits.
 So i don't know the maths here but i was quite sure that it should be less than 2048 as then it will be greater than n.
 Then I approached admin Factoreal for it. Then he told me what happen if gcd(e,phi) not equal to 1. So after tinkering around with my teammates I come to the point that's not possible LOL because we don't know but then I realised it that I have seen this things before after searching we get to know we can use precision for it. And we solved this after solving Clever girl question which boosted up our confidence for going with precision.
 
+Note:We need to change the last char btw as precision was not too good enough for it.
+
 
 So here was the final [script](script.py):
 
@@ -121,5 +123,66 @@ for i in range(4096):
  >Flag:CCTF{it5_3a5y_l1k3_5uNd4y_MOrn1N9}
  
  
- 
- 
+ ## Clever Girl -:
+> description: 
+
+
+There is no barrier to stop a [clever girl](clever_girl.py)!
+
+
+33 solves
+
+### Solution:
+
+The given script:
+```python
+#!/usr/bin/env python
+
+import gmpy2
+from fractions import Fraction
+from secret import p, q, s, X, Y
+from flag import flag
+
+assert gmpy2.is_prime(p) * gmpy2.is_prime(q) > 0
+assert Fraction(p, p+1) + Fraction(q+1, q) == Fraction(2*s - X, s + Y)
+print 'Fraction(p, p+1) + Fraction(q+1, q) = Fraction(2*s - %s, s + %s)' % (X, Y)
+
+n = p * q
+c = pow(int(flag.encode('hex'), 16), 0x20002, n)
+print 'n =', n
+print 'c =', c
+```
+
+So we were given n,c,x and y. This time there are three unknowns p,q and s. We now need to get three equations,first one is `p*q=n` and other two will get by equating numerator and denominator as they had lesser possiblity to have gcd() !=1 for which I did some maths for it. The next two are `n+q=s+y` and `2*n+p+q+1=2*s-x`  . So  my teammate get the values for it quickly.
+
+`nonlinsolve([n+q - s - Y, 2*n+p+q+1-2*s+X, p*q-n], (p,q,s))`
+
+And he was so amazed to tell me that we got p and q from it.
+
+```
+(12604273285023995463340817959574344558787108098986028639834181397979984443923512555395852711753996829630650627741178073792454428457548575860120924352450409, 12774247264858490260286489817359549241755117653791190036750069541210299769639605520977166141575653832360695781409025914510310324035255606840902393222949771, 161010103536746712075112156042553283066813155993777943981946663919051986586388748662616958741697621238654724628406094469789970509959159343108847331259823138256432294313269203421659050140817247896562556361172161032623037006361409872307045649661542219054272855881029305328814299453639438693256941440232720246684)
+```
+
+Then same thing what we did for roxen as here gcd(e,phi) is 2 So we used precision for it. For lower precision the result was like this:
+>b'CCTF{4L\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+Then increasing it to 10000 we get the flag.
+
+ ```python
+ import gmpy2
+from Crypto.Util.number import *
+
+gmpy2.get_context().precision=10000
+
+p = 12604273285023995463340817959574344558787108098986028639834181397979984443923512555395852711753996829630650627741178073792454428457548575860120924352450409
+q = 12774247264858490260286489817359549241755117653791190036750069541210299769639605520977166141575653832360695781409025914510310324035255606840902393222949771
+n = 161010103536746712075112156042553283066813155993777943981946663919051986586388748662616958741697621238654724628406094469789970509959159343108847331259823125490271091357244742345403096394500947202321339572876147277506789731024810289354756781901338337411136794489136638411531539112369520980466458615878975406339
+c = 64166146958225113130966383399465462600516627646827654061505253681784027524205938322376396685421354659091159523153346321216052274404398431369574383580893610370389016662302880230566394277969479472339696624461863666891731292801506958051383432113998695237733732222591191217365300789670291769876292466495287189494
+assert p*q == n
+
+h = (p-1)*(q-1)
+print(gmpy2.gcd(0x20002, h))
+d = gmpy2.invert(0x20002//2, h)
+print(long_to_bytes(gmpy2.sqrt(pow(c,d,n))))
+ ```
+
+>Flag: CCTF{4Ll___G1rL5___Are__T4len73E__:P}
