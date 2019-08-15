@@ -49,8 +49,10 @@ print 'c =', hex(c)
 ```
 Lets, start from the top:
 
-So exp&(exp+1)==0 that just means exp must be a [Mersenne number](http://mathworld.wolfram.com/MersenneNumber.html). Then adlit(x) is returning  the xored of passed number with the next biggest possible number with same length of bits which means basically that returned number contains reversed bits of passed number then i realised that it's nothing difficult if you know the bits length you can just subtract the number from that max length bit number.
->For eg. adlit(44) + 44 = 63, adlit(120) +adlit(120) =127.
+So exp&(exp+1)==0 that just means exp must be a [Mersenne number](http://mathworld.wolfram.com/MersenneNumber.html). Then adlit(x) is returning  the xor of passed number with the next biggest possible number with same length of bits which means basically that returned number contains reversed bits of passed number.
+
+Then i realised that it's nothing difficult if you know the bits length you can just subtract the number from that max length bit number.
+>For eg. adlit(44) + 44 = 63, adlit(120) +120 =127.
 Simple isn't it
 
 So we know n is 2048 bits long so p and q might be 1024 bits prime number.Let's check for it. 
