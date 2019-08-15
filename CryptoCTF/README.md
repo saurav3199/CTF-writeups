@@ -77,7 +77,7 @@ while i :
             exit(0)
 ```
 No result it went further around 100000 bits.
-So i don't know the maths here but i was quite sure that it should be less than 2048 as then it will be greater than n.
+I was quite sure that it should be less than 2048 as then it will be greater than n.
 Then I approached admin Factoreal for it. Then he told me what happen if gcd(e,phi) not equal to 1. So after tinkering around with my teammates I come to the point that's not possible LOL because we don't know but then I realised it that I can use CRT for it but it would become complicated maybe some simple approach will do then my teammate told me we can use precision for it. And we solved this after solving Clever girl question which boosted up our confidence for going with precision.
 
 Note:We need to change the last char btw as precision was not too good enough for it.
