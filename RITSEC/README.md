@@ -186,3 +186,83 @@ Here is your flag: `RITSEC{WelcomeToTheDuckArmyInvasion}`
 PS: Stego problems has always another way out 
 
 Well I really want to know the data filter query to grab the `tcp.segment_data` directly from wireshark and export it or using tshark. Really need to know man! :grimacing:
+
+
+# **CRYPTO**
+
+## random-:
+> description:
+
+nc ctfchallenges.ritsec.club 8001
+
+### Solution:
+
+When we connect we were given some numbers:
+
+![numbers](scripts/connect_random.png)
+
+Hmm. the numbers were pretty random on each run but less than 2^31 (INT_MAX) which made me feel some seed is used for printing random numbers and that is possibly can be done by choosing random seeds.Two ways:
+
+1. Either seed is also taken by rand() which is less likely.
+2. Or using time(0) as a seed which is more likely obviously. 
+
+So just sending the numbers at the same time from using 'C' [program](scripts/a.c) (as given in hint) and then send them back with [script](scripts/script.py) will give us the flag.
+
+C Program 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv)
+{
+    int numbers[] = {atoi(argv[1]), atoi(argv[2]), atoi(argv[3]),atoi(argv[4]), atoi(argv[5])};
+    int r,t=time(0),j=4;
+    for(int i = 0; i < 10; i++)
+    {
+        srand(t - i);
+        r=rand();
+        if(r!=numbers[0])
+            continue;
+        while(j-->0)
+        {
+            rand();
+        }
+        printf("%d\n",rand());
+        break;
+    }
+    return 0;
+}
+```
+Python 
+```python
+from pwn import *
+import time
+
+r =  remote('ctfchallenges.ritsec.club',8001)
+output=r.recv().split()
+output[3:-2]=[]
+nums=list(map(int,output))
+print(nums)
+
+p = process(['./a.out']+[str(i) for i in nums])
+
+data=p.recvall().strip().split(" ")
+print(data)
+r.recvuntil('number?')
+r.sendline(data[0])
+r.interactive()
+r.close()
+
+```
+
+Note : I checked several times but I was getting the flag at the first run so did not need to change seed or bruteforcing the seed (If considering server delay)
+
+![image](scripts/flag_random.png)
+
+Which spits out the flag: `RITSEC{404_RANDOMNESS_NOT_FOUND}`
+
+
+
+
