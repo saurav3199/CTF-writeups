@@ -63,7 +63,8 @@ So I searched for Star tables github and look for various codes until I found th
 .................
 .................
 ```
-Then we just need to calculate the distance between stars given to us. So I [scripted](scripts/obtain_stars.py) it
+Well why we need to calculate distance? Will it give the flag ? On checking for first pair of stars I got something like 1.14 that is nothing but ascii code of 'R'.
+So we just need to calculate the distance between stars given to us. So I [scripted](scripts/obtain_stars.py) it
 
 ```python
 from math import *
