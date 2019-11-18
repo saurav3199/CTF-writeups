@@ -263,6 +263,75 @@ Note : I checked several times but I was getting the flag at the first run so di
 
 Which spits out the flag: `RITSEC{404_RANDOMNESS_NOT_FOUND}`
 
+# **WEB**
 
+## Our First API:
+> description:
 
+ctfchallenges.ritsec.club:3000 ctfchallenges.ritsec.club:4000
 
+Hint: You don't need the Bearer keyword!
+
+Author: sandw1ch
+
+When we access the port 3000 endpoint we get the message `This page is only for authentication with our api, located at port 4000!`. Going to port 4000 endpoint we are greeted with information about the API.
+
+![Api Landing Page](scripts/api-landing-page.png)
+
+Going through the source code of the page theres a comment that hint on an robots.txt file, 
+
+![Robots comment](scripts/robots-comment.png)
+
+which we can find on the port 3000 endpoint.
+```
+User-agent: *
+Disallow: /signing.pem
+Disallow: /auth
+```
+
+From that we can get the public key for the authentication token siging.
+
+### Authentication token (JWT)
+
+When doing a get to the port 3000 end point, with path /auth and a URL parameter "name" with any name string, we got back a JWT token.
+JWT token are compose with thre parts: the header, the payload and the signature. This JWT it was encrypted using Asymetric keys (RS256) and had information about the user in the payload.
+
+Header
+```json
+{
+    "typ":"JWT",
+    "alg":"RS256"
+}
+```
+
+Payload
+```json
+{
+    "name":"admin",
+    "type":"user",
+    "iat":1574099947
+}
+```
+
+With the help of this nifty [article](https://medium.com/101-writeups/hacking-json-web-token-jwt-233fe6c862e6) we found that we can change the algorithm to use symetric keys (HS256), change the payload to the type to be admin and sign the JWT token using the public key that we already got. (It was used the article code to the signing, just make sure that version of pyjwt is 0.4.3 (not known if with another version would work), so it won't work)
+
+Modified Header
+```json
+{
+    "typ":"JWT",
+    "alg":"HS256"
+}
+```
+
+Modified Payload
+```json
+{
+    "name":"admin",
+    "type":"admin",
+    "iat":1574099947
+}
+```
+
+With the new signed token, we just need to send a get to the port 4000 endpoint, path /api/admin with the token as authentication and we get the flag. I used Insomnia for all API calls. To authenticate I used the Bearer option with an space as prefix, for that was anounced, as hint, mid CTF, that it takes no prefix.
+
+[Insomnia flag](scripts/insomnia.png)
