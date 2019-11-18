@@ -147,6 +147,40 @@ p0KNReuKuq17V9x21jb9IwjSPDtuKukGWXXD1AS/XgwAAAAAAAAAAAAAAAAAWDwB38XEewAoAAA=
 ```
 In this first one is  base64 encoded youtube link of RICK ROLL :satisfied: and the second one is actually a gzip compressed file.
 
-On extracting the file.gz with command **tar -xvf file.gz** it gives the flag file which contains the flag:
+On extracting the file.gz with command `tar -xvf file.gz` it gives the flag file which contains the flag:
 
 Here is the flag: __RITSEC{pcaps_0r_it_didnt_h@ppen}__
+
+
+# **STEGO**
+
+## exfiltrated_duck-:
+> description:
+
+If it walks like a duck, pcaps like a duck, and looks like a duck, what is it?
+
+Created by Security Risk Advisors for RITSEC Fall 2019
+
+### Solution:
+
+We were given with a large pcapng file which has huge number of packets . So on inspecting  we see two streams of large data. Found starting bits as `iVBORw0KGgoAAAANSUhEU` which is the png signature .My teammate well somehow retrieved the whole data segment from using regexes.
+Here is the [image file](https://drive.google.com/file/d/1l00nP1t8t7kWrwYXkt8JQFaHGw_eEcC-/view?usp=sharing) 
+
+And the fact I am noob , I was thinking if starting bits is PNG then ending should be 'IEND'.So I base64 encoded it and added some padding if you know how base64 works the string was `JRU5E` then searched it in `tcp.stream eq 1`  and found it and then copied some of the data from there and found this :
+
+![base64](scripts/iend.png)
+
+So starting bits are PK i.e. zip and then a jpg file inside it too . So let's grab it manually because its just last 2-3 packets data left only :smiley:.  I got the [zip](scripts/9CAF12.zip) which contains 
+
+![image](scripts/dai2.jpg)
+
+As expected then again on stego analysis we get [garbage in zip](scripts/13E09.zip) `Zip archive data, at least v1.0 to extract, compressed size: 49, uncompressed size: 49, name: garbage`
+
+So on looking into garbage which isn't really a grabage string 
+```952bpNXY25WS51mcBt2Y1RUZoR1bUVWbvNGbld1eDV0UUlkU```
+If you see it reverse order which is the flag:
+
+Here is your flag: `RITSEC{WelcomeToTheDuckArmyInvasion}`
+
+PS: Stego problems has always another way out 
+
