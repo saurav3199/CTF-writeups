@@ -81,7 +81,11 @@ Everybody find it difficult or guessing enough before a hint arrived which said
 
 > *If you lost your copy of 'STAR TABLES', you should be able to find the 'open source' version*
 
-So I searched for Star tables github and look for various codes until I found this one <https://github.com/chrislgarry/Apollo-11/blob/master/Comanche055/STAR_TABLES.agc> .On understanding the code I found the x,y,z coordiantes of stars were given. Reformatted that file using regex to get [this](scripts/STAR_TABLES.agc) file
+So I searched for Star tables github and look for various codes until I found this one 
+
+> <https://github.com/chrislgarry/Apollo-11/blob/master/Comanche055/STAR_TABLES.agc>
+
+On understanding the code I found the x,y,z coordiantes of stars were given. Reformatted that file using regex to get [this](scripts/STAR_TABLES.agc) file
 
 ```
 +.8342971408 37 X
@@ -151,6 +155,99 @@ On extracting the file.gz with command `tar -xvf file.gz` it gives the flag file
 
 Here is the flag: __RITSEC{pcaps_0r_it_didnt_h@ppen}__
 
+
+## URGGGGG-:
+> description:
+
+One of our operatives sent us this packet capture but we aren't quite sure what to make of it, what can you find?
+
+### Solution:
+
+First converted given pcapng into [pcap](scripts/urg.pcap) `tshark -F pcap -r  URGGGGGG.pcapng -w urg.pcap`
+
+Then on inspecting we get it is USB pcap. So I looked for the descriptor device if it is either mouse,keyboard or printer or something else.
+I found nothing :anguished: . So I need to check on all but because of past experience with keyboard usb pcap, I went first with it and that was it.
+
+So I get the details of all leftover data by applying it as a column and then exported it as CSV.Then using regexes filter out the important part.Its easy process rather thinking of some special command LOL.
+
+So here is the [file](scripts/leftover2.txt) which looks like this: 
+
+```
+0000040000000000
+0000040000000000
+0000040000000000
+0000040000000000
+0000041600000000
+0000041600000000
+0000041600000000
+0000041633000000
+0000041633000000
+0000041633120000
+```
+
+
+Then I scripted and mapped it with qwerty keyboards from using [references](https://ctf-wiki.github.io/ctf-wiki/misc/traffic/protocols/figure/keyboard_pro.png) 
+
+Here is the [script](scripts/key.py):
+
+
+
+```python
+usb_codes = {
+    "04":"aA", "05":"bB", "06":"cC", "07":"dD", "08":"eE", "09":"fF",
+    "0a":"gG", "0b":"hH", "0c":"iI", "0d":"jJ", "0e":"kK", "0f":"lL",
+    "10":"mM", "11":"nN", "12":"oO", "13":"pP", "14":"qQ", "15":"rR",
+    "16":"sS", "17":"tT", "18":"uU", "19":"vV", "1a":"wW", "1b":"xX",
+    "1c":"yY", "1d":"zZ", "1e":"1!", "1f":"2@", "20":"3#", "21":"4$",
+    "22":"5%", "23":"6^", "24":"7&", "25":"8*", "26":"9(", "27":"0)",
+    "2c":"  ", "2d":"-_", "2e":"=+", "2f":"[{", "30":"]}",  "32":"#~",
+    "33":";:", "34":"'\"",  "36":",<",  "37":".>"
+    }
+f=open("leftover2.txt").read()
+f=f.split("\n")
+li=[0]
+for i in f:
+    if "00" == i[:2] or "02" == i[:2] or "01" == i[:2]: # "00" for non-shift |  "01" for ctrl+ | "02" for shift 
+        if "0"*10 in i:
+            if li[-1]!=i:
+                li.append(i)
+
+
+lines = ["","","","","","","","",""]  #to handle left and right -> <- moves
+        
+pos = 0
+
+for i in li[1:]:
+    if i[4:6]=="51" or i[4:6]=="28":
+        pos+=1
+        continue
+    elif i[4:6]=="52":
+        pos-=1
+        continue
+    if "0000000000" in i:
+        try:
+            if i[:2]=="01":
+                print(lines)
+            if i[:2]=="02":
+                lines[pos]+=usb_codes[i[4:6]][1] 
+            elif i[:2]=="00":
+                lines[pos]+=usb_codes[i[4:6]][0]
+        except:
+            pass
+
+print(lines)
+```
+
+We got the output which I truncated here:
+
+```
+['ablglolglfikfj', 'jf', 'a)($49(Y9afgo', '', ' ', '', 'RITSEC{wH0_s@', '', '']                        $1
+['ablglolglfikfj', 'jf', 'a)($49(Y9afgo', '', ' ', 'x', 'RITSEC{wH0_s@vd_n', '', '']                   $2
+['ablglolglfikfj', 'jf', 'a)($49(Y9afgo', '', ' ', 'x', 'RITSEC{wH0_s@vd_ntw0rk1nG_wAs_tH3_oNlY_pAck3t_TyP3}', 'jlkgjkfe', 'akjilhlskfffceiuhha']                                                                                 $3
+```
+So all the gibberish printed by challenge creater is here and I didn't implemented the ctrl+x part because I have no knowlege about how key is being highlighted and cut using CTRL+X. But there were only two occurences of that happening i.e ctrl+x ctrl+v after $1 and ctrl+c ctrl+v after $2 . So I know the indexes and pretty much I can guess them as _leet_.
+
+Final flag `RITSEC{wH0_s@id_n3tw0rk1nG_wAs_tH3_oNlY_pAck3t_TyP3}`
 
 # **STEGO**
 
