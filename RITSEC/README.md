@@ -163,7 +163,8 @@ Created by Security Risk Advisors for RITSEC Fall 2019
 
 ### Solution:
 
-We were given with a large pcapng file which has huge number of packets . So on inspecting  we see two streams of large data. Found starting bits as `iVBORw0KGgoAAAANSUhEU` which is the png signature .My teammate well somehow retrieved the whole data segment from using regexes.
+We were given with a large pcapng file which has huge number of packets . So on inspecting  we see two streams of large data. Found starting bits as `iVBORw0KGgoAAAANSUhEU` which is the png signature .My teammate well somehow retrieved the whole data segment from using regexes(not gonna explain it :sweat_smile:).
+
 Here is the [image file](https://drive.google.com/file/d/1l00nP1t8t7kWrwYXkt8JQFaHGw_eEcC-/view?usp=sharing) 
 
 And the fact I am noob , I was thinking if starting bits is PNG then ending should be 'IEND'.So I base64 encoded it and added some padding if you know how base64 works the string was `JRU5E` then searched it in `tcp.stream eq 1`  and found it. So I copied some of the data from there and found this :
