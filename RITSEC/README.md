@@ -334,4 +334,4 @@ Modified Payload
 
 With the new signed token, we just need to send a get to the port 4000 endpoint, path /api/admin with the token as authentication and we get the flag. I used Insomnia for all API calls. To authenticate I used the Bearer option with an space as prefix, for that was anounced, as hint, mid CTF, that it takes no prefix.
 
-[Insomnia flag](scripts/insomnia.PNG)
+![Insomnia flag](scripts/insomnia.PNG)
