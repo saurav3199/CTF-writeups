@@ -44,7 +44,7 @@ Star 1 => Star 33
 Star 5 => Star 29
 ```
 
-So we find it difficult or guessing it enough before a hint arrived which said 
+Everybody find it difficult or guessing enough before a hint arrived which said 
 
 > *If you lost your copy of 'STAR TABLES', you should be able to find the 'open source' version*
 
