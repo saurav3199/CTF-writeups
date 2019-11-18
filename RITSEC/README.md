@@ -16,7 +16,7 @@ Encoding is not encryption, but what if I just encode the flag with base16,32,64
 
 So we were given a large file with multiple  base encoded ciphertext
 
-So we need to check the base first then decode it . To avoid this I actually took help of try catch error to do it fast .Here is the [script](script/onion.py):
+So we need to check the base first then decode it . To avoid this I actually took help of try catch error to do it fast .Here is the [script](scripts/onion.py):
 
 ```python
 import base64
