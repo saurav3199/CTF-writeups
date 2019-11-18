@@ -289,7 +289,7 @@ Disallow: /signing.pem
 Disallow: /auth
 ```
 
-From that we can get the public key for the authentication token siging.
+From that we can get the public key for the authentication token signig.
 
 ### Authentication token (JWT)
 
@@ -313,7 +313,7 @@ Payload
 }
 ```
 
-With the help of this nifty [article](https://medium.com/101-writeups/hacking-json-web-token-jwt-233fe6c862e6) we found that we can change the algorithm to use symetric keys (HS256), change the payload to the type to be admin and sign the JWT token using the public key that we already got. (It was used the article code to the signing, just make sure that version of pyjwt is 0.4.3 (not known if with another version would work), so it won't work)
+With the help of this nifty [article](https://medium.com/101-writeups/hacking-json-web-token-jwt-233fe6c862e6) we found that we can change the algorithm to use symetric keys (HS256), change the payload to the type to be admin and sign the JWT token using the public key that we already got. (It was used the article code to the signing, just make sure that version of pyjwt is 0.4.3 (not known if with another version would work), if not, it won't work)
 
 Modified Header
 ```json
@@ -334,4 +334,4 @@ Modified Payload
 
 With the new signed token, we just need to send a get to the port 4000 endpoint, path /api/admin with the token as authentication and we get the flag. I used Insomnia for all API calls. To authenticate I used the Bearer option with an space as prefix, for that was anounced, as hint, mid CTF, that it takes no prefix.
 
-[Insomnia flag](scripts/insomnia.png)
+[Insomnia flag](scripts/insomnia.PNG)
