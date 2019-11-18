@@ -3,7 +3,40 @@ A jeopardy styled CTF : RITSEC CTF 2019 is a security-focused competition
 
 We tried to solve challenges as much as possible we can and as a result we secured 22rd position globally.
 
+
+
 # **MISC**
+
+## Onion Layer Encoding-:
+> description:
+
+Encoding is not encryption, but what if I just encode the flag with base16,32,64? If I encode my precious flag for 150 times, surely no one will be able to decode it, right?
+
+### Solution:
+
+So we were given a large file with multiple  base encoded ciphertext
+
+So we need to check the base first then decode it . To avoid this I actually took help of try catch error to do it fast .Here is the [script](script/onion.py):
+
+```python
+import base64
+flag=open("onionlayerencoding.txt","r").read()
+while "RITSEC" not in str(flag):
+    try:
+        flag=base64.b16decode(flag)
+    except:
+        try:
+            flag=base64.b32decode(flag)
+        except:
+            flag=base64.b64decode(flag)
+
+print(flag)
+```
+It give us the flag : __RITSEC{0n1On_L4y3R}__
+
+PS: Weird thing is that its not 150 times it was 32 times only. Idk why :(
+
+
 
 ## Lunar Lander-:
 > description: 
@@ -91,5 +124,7 @@ for i in d:
 print(flag)
 ```
 
-Tada :It spits out the flag: > ritsec{leap_4_th3_stars}
+Tada :It spits out the flag: __ritsec{leap_4_th3_stars}__
+
+
 
