@@ -166,11 +166,11 @@ Created by Security Risk Advisors for RITSEC Fall 2019
 We were given with a large pcapng file which has huge number of packets . So on inspecting  we see two streams of large data. Found starting bits as `iVBORw0KGgoAAAANSUhEU` which is the png signature .My teammate well somehow retrieved the whole data segment from using regexes.
 Here is the [image file](https://drive.google.com/file/d/1l00nP1t8t7kWrwYXkt8JQFaHGw_eEcC-/view?usp=sharing) 
 
-And the fact I am noob , I was thinking if starting bits is PNG then ending should be 'IEND'.So I base64 encoded it and added some padding if you know how base64 works the string was `JRU5E` then searched it in `tcp.stream eq 1`  and found it and then copied some of the data from there and found this :
+And the fact I am noob , I was thinking if starting bits is PNG then ending should be 'IEND'.So I base64 encoded it and added some padding if you know how base64 works the string was `JRU5E` then searched it in `tcp.stream eq 1`  and found it. So I copied some of the data from there and found this :
 
 ![base64](scripts/chunkdecode.png)
 
-So starting bits are PK i.e. zip and then a jpg file inside it too . So let's grab it manually because its just last 2-3 packets data left only :smiley:.  I got the [zip](scripts/9CAF12.zip) which contains 
+So starting bits are PK i.e. zip and then a jpg file inside it too . So let's grab it manually because last 2-3 packets data left only :smiley:.Then I got the [zip](scripts/9CAF12.zip) which contains 
 
 ![image](scripts/dai2.jpg)
 
@@ -184,3 +184,4 @@ Here is your flag: `RITSEC{WelcomeToTheDuckArmyInvasion}`
 
 PS: Stego problems has always another way out 
 
+Well I really want to know the data filter query to grab the `tcp.segment_data` directly from wireshark and export it or using tshark. Really need to know man! :grimacing:
