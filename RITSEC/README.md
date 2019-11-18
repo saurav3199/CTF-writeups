@@ -168,7 +168,7 @@ Here is the [image file](https://drive.google.com/file/d/1l00nP1t8t7kWrwYXkt8JQF
 
 And the fact I am noob , I was thinking if starting bits is PNG then ending should be 'IEND'.So I base64 encoded it and added some padding if you know how base64 works the string was `JRU5E` then searched it in `tcp.stream eq 1`  and found it and then copied some of the data from there and found this :
 
-![base64](scripts/iend.png)
+![base64](scripts/chunkdecode.png)
 
 So starting bits are PK i.e. zip and then a jpg file inside it too . So let's grab it manually because its just last 2-3 packets data left only :smiley:.  I got the [zip](scripts/9CAF12.zip) which contains 
 
