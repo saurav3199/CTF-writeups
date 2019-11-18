@@ -127,4 +127,26 @@ print(flag)
 Tada :It spits out the flag: __ritsec{leap_4_th3_stars}__
 
 
+# **FORENSICS**
 
+## findme-:
+> description:
+
+Find me! Challenge created by Security Risk Advisors for RITSEC CTF
+
+### Solution:
+
+So we were given with a [pcap](scripts/findme.pcap)
+
+Inspecting it , we see Server Host IP 18.219.169.113  which has two ports open 80 and 1337 . And there were two streams in pcap first one is the http server where base64 encoded RICK ROLL photo was uploaded and was just a distraction ,while in the second stream we find this string 
+```
+aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQo=
+H4sIAFSZx10AA+3OMQuCQBiH8Zv9FPcFgrvUcw2kIWgydzG1EkQPvZui757S0lSTRPD8lmd43+F/
+6cqrWJmaGRMt1Ums3vtitkKHsdGJDqNtKJSeGwup1h628JMrRymFP/ve+Q9/X+5/Kjvkp316t1Vp
+p0KNReuKuq17V9x21jb9IwjSPDtuKukGWXXD1AS/XgwAAAAAAAAAAAAAAAAAWDwB38XEewAoAAA=
+```
+In this first one is  base64 encoded youtube link of RICK ROLL :satisfied: and the second one is actually a gzip compressed file.
+
+On extracting the file.gz with command **tar -xvf file.gz** it gives the flag file which contains the flag:
+
+Here is the flag: __RITSEC{pcaps_0r_it_didnt_h@ppen}__
