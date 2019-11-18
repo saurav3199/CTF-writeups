@@ -48,7 +48,7 @@ Everybody find it difficult or guessing enough before a hint arrived which said
 
 > *If you lost your copy of 'STAR TABLES', you should be able to find the 'open source' version*
 
-So I searched for Star tables github and look for various codes until I found this one <https://github.com/chrislgarry/Apollo-11/blob/master/Comanche055/STAR_TABLES.agc> .On understanding the code I found the x,y,z coordiantes of stars were given. Reformatted that file using regex like [this](scripts/STAR_TABLES.agc)
+So I searched for Star tables github and look for various codes until I found this one <https://github.com/chrislgarry/Apollo-11/blob/master/Comanche055/STAR_TABLES.agc> .On understanding the code I found the x,y,z coordiantes of stars were given. Reformatted that file using regex to get [this](scripts/STAR_TABLES.agc) file
 
 ```
 +.8342971408 37 X
