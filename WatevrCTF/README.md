@@ -19,7 +19,7 @@ then looking for more in direction of approach 2nd I thought, that 119 is the va
 So maybe 'a' will be the value of polynomial at x='1' as we know the flag format 'watevr{'.
 
 Thus [scripting](scripts/poly.py) it in few lines using [sympy](https://www.sympy.org/).
-
+I wonder though it has quite less solves :confused:
 ```python
 
 from sympy import *
@@ -45,7 +45,7 @@ We were given 64 bit binary [kamikaze](scripts/kamikaze)
 >kamikaze: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/l, for GNU/Linux 3.2.0, BuildID[sha1]=0e647f48bd36f15e866166910d10dd173fb0fcf6, not stripped
 
 Upon finding functions `0x0000000000400807  super_secret_function` found this but main function wasn't redirecting it.
-So basic buffer overflow challenge and set the return pointer to this function and then execute it .
+So basic buffer overflow challenge and set the return pointer to this function and then execute it . For offset calculation the buffer size was 2 so adding 8 bytes extra as in 64 bit binary to set the instruction pointer to the right location.
 
 So one liner linux command for that:
 
