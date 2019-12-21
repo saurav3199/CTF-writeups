@@ -128,7 +128,7 @@ Server response:
 ![image](assets/orakel_run0.png)
 .........................
 .........................
-![image](assets/orakel_run1.png)
+![image](assets/orakel_run2.png)
 Full Response: [response](assets/response.txt)
 
 Here is our flag:`X-MAS{7hey_h4t3d_h1m_b3c4use_h3_sp0k3_th3_truth}`
