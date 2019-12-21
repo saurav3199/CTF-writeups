@@ -42,7 +42,7 @@ def triplets(limit):
 
 lis=triplets(16000000)
 lis=sorted(lis,key=lambda l:l[::-1])
-print(len(lis))
+print("The number of triplets generated:" +str(len(lis)))
 file=open("triplets_list.txt","w")
 file.write('\n'.join(str(j) for j in lis))
 
@@ -62,7 +62,6 @@ while 1:
         exit()
     print(r.recvuntil(":\n"))
     resp=r.recv().split()
-    print(resp)
     index=int(resp[3][:-3])
     ans=lis[index-1]
     data=','.join(str(i) for i in ans)
