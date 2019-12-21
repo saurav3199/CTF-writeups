@@ -274,7 +274,11 @@ while 1:
 r.close()
 ```
 
-We got the [response](assets/pyth_response.txt) for the above [script](assets/pyth_self.py)
+![image](assets/pyth_flag.png) 
+
+
+
+We got this full [response](assets/pyth_response.txt) for the above [script](assets/pyth_self.py)
 
 Here is our flag:`X-MAS{Th3_Tr33_0f_pr1m1t1v3_Pyth4g0r34n_tr1ple5}`
 
