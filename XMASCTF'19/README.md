@@ -29,7 +29,7 @@ The graph of function over value recieved at each character sent is not monotoni
 And on sending the correct composition of letters with the padding(to make the length required as expected) at end.Thus the perect searching algorithm to check each character at each run will be [ternary search](https://en.wikipedia.org/wiki/Ternary_search).
 
 
-#### Level of optimization required:
+#### Several levels of optimization required:
 
 So I tried to script it according to the algorithm as said here [ternary algo](https://cp-algorithms.com/num_methods/ternary_search.html) But that took around 80 chars right only out of 90 because of the complexity.
 
