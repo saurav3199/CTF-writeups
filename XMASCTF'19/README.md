@@ -135,5 +135,147 @@ Full Response: [response](assets/response.txt)
 
 Here is our flag:`X-MAS{7hey_h4t3d_h1m_b3c4use_h3_sp0k3_th3_truth}`
 
+## Pythagoreic Pancakes-:
+> description:
+
+We got a weird transmission through space time from some guy that claims he's related to Santa Claus. He says that he has a really difficult problem that he needs to solve and he needs your help. Maybe it's worth investigating.
+
+Remote server: nc challs.xmas.htsp.ro 14004
+
+### Solution: 
+
+When we connect to the server it asks to solve POW first to access it 
+So I will be using this script for almost all challenges who required POW at the beginning.
+
+```python
+#!/usr/bin/env python
+import re
+import base64
+import hashlib
+from pwn import*
+
+
+def breakit(target):
+    iters = 0
+    while 1:
+        s = str(iters)
+        iters = iters + 1
+        try:
+            hashed_s = hashlib.sha256(s.decode("hex")).hexdigest()
+        except:
+            continue
+        r = re.match('^0e[0-9]{27}', hashed_s)
+        if hashed_s[-6:]==target:
+            print "[+] found! sha256( {} ) ---> {}".format(s, hashed_s)
+            return s
+        if iters % 1000000 == 0:
+            print "[+] current value: {}       {} iterations, continue...".format(s, iters)
+
+
+r=remote("challs.xmas.htsp.ro",14004)       # server to connect 
+
+target=r.recv().split()[-1]
+print(target)
+foundhash=breakit(target)
+print(foundhash)
+r.sendline(foundhash)
+print(r.recv())
+print(r.recv())
+
+r.close()
+```
+
+So now we can face the real challenge:
+
+![image](assets/pyth_greeting.png)
+
+So we are required to send the nth primitive pythagorean triplet in the requested order.And I am thinking that this n will increase over the levels.So I need to write a optimized code as , all ppc challenges are required to do.
+
+So I searched wikilinks [wiki](https://en.wikipedia.org/wiki/Pythagorean_triple) and [formula that can generate it](https://en.wikipedia.org/wiki/Formulas_for_generating_Pythagorean_triples). And then I picked the euler formula for it.
+
+#### NOTE : to avoid the triplets which are not 'primitive'  but generated and are in given form will be discarded using gcd. 
+
+> a=k*(m\*m-n\*n) , b=k*(2\*m\*n) , c= k*(m\*m+n\*n)
+
+That was an easy challenge overall i must say :) .
+
+```python
+#!/usr/bin/env python
+import re
+import base64
+import hashlib
+from pwn import*
+import numpy as np
+from gmpy2 import *
+
+def breakit(target):
+    iters = 0
+    while 1:
+        s = str(iters)
+        iters = iters + 1
+        try:
+            hashed_s = hashlib.sha256(s.decode("hex")).hexdigest()
+        except:
+            continue
+
+        r = re.match('^0e[0-9]{27}', hashed_s)
+        if hashed_s[-6:]==target:
+            print "[+] found! sha256( {} ) ---> {}".format(s, hashed_s)
+            return s
+        if iters % 1000000 == 0:
+            print "[+] current value: {}       {} iterations, continue...".format(s, iters)
+
+
+def triplets(limit):
+    a=b=c=0
+    m=2
+    q=[]
+    while c<limit:
+        for n in range(1,m):
+            a=m*m-n*n
+            b=2*m*n
+            c=m*m+n*n
+            if c>limit:
+                break
+            if gcd(gcd(a,b),c)==1:
+                q.append(sorted([a,b,c]))
+        m+=1
+    return q
+
+lis=triplets(16000000)
+lis=sorted(lis,key=lambda l:l[::-1])
+print("The number of triplets generated:" +str(len(lis)))
+file=open("triplets_list.txt","w")
+file.write('\n'.join(str(j) for j in lis))
+
+r=remote("challs.xmas.htsp.ro",14004)
+
+target=r.recv().split()[-1]
+print(target)
+foundhash=breakit(target)
+print(foundhash)
+r.sendline(foundhash)
+level=0
+while 1:
+    level+=1
+    if level>10:
+        print(r.recv())
+        r.close()
+        exit()
+    print(r.recvuntil(":\n"))
+    resp=r.recv().split()
+    index=int(resp[3][:-3])
+    ans=lis[index-1]
+    data=','.join(str(i) for i in ans)
+    print(data)
+    r.sendline(data)
+    print(r.recvuntil("\n"))
+
+r.close()
+```
+
+We got the [response](assets/pyth_response.txt) for the above [script](assets/pyth_self.py)
+
+Here is our flag:`X-MAS{Th3_Tr33_0f_pr1m1t1v3_Pyth4g0r34n_tr1ple5}`
 
 
