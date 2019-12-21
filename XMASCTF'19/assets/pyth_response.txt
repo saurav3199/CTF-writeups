@@ -1,0 +1,70 @@
+The number of triplets generated:1622178
+[+] Opening connection to challs.xmas.htsp.ro on port 14004: Done
+5ccd21
+[+] current value: 999999       1000000 iterations, continue...
+[+] current value: 10999999       11000000 iterations, continue...
+[+] current value: 11999999       12000000 iterations, continue...
+[+] current value: 12999999       13000000 iterations, continue...
+[+] current value: 13999999       14000000 iterations, continue...
+[+] found! sha256( 14078420 ) ---> 731b7085f21616ee52dcb3aaa322f02c52aafad27473d11a7cc1db460c5ccd21
+14078420
+Good, you can continue!
+
+Hey there, Santa's distant relative here, Pythagora has a question for you!
+Sit and listen, it might be an old story.
+Note: the pythagorean triples are sorted increasingly by c (the hypotenuse), then by b (the long leg) then by a (the short leg).
+Also you have 5 seconds / test.
+Here's the challange #1:
+
+12824,51657,53225
+Well done, here, have another.
+
+Here's the challange #2:
+
+11433,47056,48425
+Well done, here, have another.
+
+Here's the challange #3:
+
+2340,13589,13789
+Well done, here, have another.
+
+Here's the challange #4:
+
+37695,58928,69953
+Well done, here, have another.
+
+Here's the challange #5:
+
+6003,33796,34325
+Well done, here, have another.
+
+Here's the challange #6:
+
+70040,104991,126209
+Well done, here, have another.
+
+Here's the challange #7:
+
+91176,267007,282145
+Well done, here, have another.
+
+Here's the challange #8:
+
+293807,796824,849265
+Well done, here, have another.
+
+Here's the challange #9:
+
+1663584,1901663,2526625
+Well done, here, have another.
+
+Here's the challange #10:
+
+3822225,6427408,7478033
+Well done, here, have another.
+
+Good one mate, Pythagora would be proud!
+Here's your flag: X-MAS{Th3_Tr33_0f_pr1m1t1v3_Pyth4g0r34n_tr1ple5}
+
+[*] Closed connection to challs.xmas.htsp.ro port 14004
