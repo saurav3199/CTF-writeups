@@ -23,8 +23,8 @@ When we connect to the server,we were greeted with this
 
 ![image](assets/disc_log.png)
 
-So from the description we know we need to do something with "discrete log" . But then analyzing this opertor ^^ , we found that this is something we known as [Tetration](https://en.wikipedia.org/wiki/Tetration).
-So in normal [discrete log](https://en.wikipedia.org/wiki/Discrete_logarithm) , for a function (a^x)=b mod p we need to find x by using baby-step giant-step method. But here the things are different .
+So from the description we know we need to do something with *discrete log* . But then analyzing this opertor **^^** , we found that this is something we known as [Tetration](https://en.wikipedia.org/wiki/Tetration).
+So in [Discrete log](https://en.wikipedia.org/wiki/Discrete_logarithm) , for a function (a^x)=b mod p we need to find x by using baby-step giant-step method. But here the things are different and as they *Discrete superlog*.
 
 
 So let's brute the value of x , in simple words we check for each value of x.
