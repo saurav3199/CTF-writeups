@@ -104,3 +104,72 @@ We got [this response](assets/discsuperlog_response.txt) for the above [script](
 
 Here is our flag:`actf{lets_stick_to_discrete_log_for_now...}`
 
+# **CRYPTO**
+
+## Wacko Images-:
+> description:
+
+How to make hiding stuff a e s t h e t i c? And can you make it normal again? [enc.png](assets/enc.png) [image-encryption.py](assets/image-encryption.py)
+
+Author: floorthfloor
+
+
+### Solution: 
+So we are given a  script which just encrypt the value of [r,g,b] values of each pixel in the image. And makes the image completely gibberish from outside.
+
+![image](assets/enc.png)
+
+The given script:
+```python
+from numpy import *
+from PIL import Image
+
+flag = Image.open(r"flag.png")
+img = array(flag)
+
+key = [41, 37, 23]
+
+a, b, c = img.shape
+
+for x in range (0, a):
+    for y in range (0, b):
+        pixel = img[x, y]
+        for i in range(0,3):
+            pixel[i] = pixel[i] * key[i] % 251
+        img[x][y] = pixel
+
+enc = Image.fromarray(img)
+enc.save('enc.png')
+```
+So if we see the script we found that values are multiplied by key array. So we need to just divide it (*modular division*) :smiley: .
+
+Here is our [script](assets/dec.py):
+
+```python
+from numpy import *
+from PIL import Image
+from gmpy2 import *
+
+flag = Image.open(r"enc.png")
+img = array(flag)
+
+key = [41, 37, 23]
+invkey=[invert(k,251) for k in key]
+
+a, b, c = img.shape
+
+for x in range (0, a):
+    for y in range (0, b):
+        pixel = img[x, y]
+        for i in range(0,3):
+            pixel[i] = pixel[i] * invkey[i] % 251
+        img[x][y] = pixel
+
+dec = Image.fromarray(img)
+dec.save('flag.png')
+```
+
+Voila! we got the flag: 
+![image](assets/flag.png)
+
+There is our flag : `actf{m0dd1ng_sk1llz}`
