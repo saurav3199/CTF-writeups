@@ -98,8 +98,9 @@ while 1:
 r.close()
 ```
 
-We got [this response]() for the above script:
+We got [this response](assets/discsuperlog_response.txt) for the above [script](assets/dec_disclog.py):
 
+[image](!assets/flag_disclog.png)
 
 Here is our flag:`actf{lets_stick_to_discrete_log_for_now...}`
 
