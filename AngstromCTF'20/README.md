@@ -104,7 +104,6 @@ We got [this response](assets/discsuperlog_response.txt) for the above [script](
 
 Here is our flag:`actf{lets_stick_to_discrete_log_for_now...}`
 
-# **CRYPTO**
 
 ## Wacko Images-:
 > description:
