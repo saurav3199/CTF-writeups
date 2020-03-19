@@ -28,7 +28,7 @@ So in normal [discrete log](https://en.wikipedia.org/wiki/Discrete_logarithm) , 
 
 
 So let's brute the value of x , in simple words we check for each value of x.
-Having [fermat's little theorem](https://en.wikipedia.org/wiki/Fermat%27s_little_theorem) in mind, I know pow(a,x,p)=pow(a,x mod(phi(p)),p ) where phi() is euler totient function.
+Having [Fermat's Little Theorem](https://en.wikipedia.org/wiki/Fermat%27s_little_theorem) in mind, I know pow(a,x,p)=pow(a,x mod(phi(p)),p ) where phi() is euler totient function.
 
 So whenever the power raised is getting bigger we will make it smaller by taking modulo over phi(p).Using simple recursion will help it. 
 
@@ -100,7 +100,7 @@ r.close()
 
 We got [this response](assets/discsuperlog_response.txt) for the above [script](assets/dec_disclog.py):
 
-[image](!assets/flag_disclog.png)
+![image](assets/flag_disclog.png)
 
 Here is our flag:`actf{lets_stick_to_discrete_log_for_now...}`
 
