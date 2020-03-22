@@ -31,7 +31,7 @@ So we need to send 16 length key and from the description we get the hint that i
 Then sending the key as of 16 length and check for each character one by one. So the correct character will give the time delay on which we can work.
 Storing the time delay on which we can select the next possible character. We can optimize it more if you know! :wink:
 
-
+Here is the [Script](assets/securesafe.py):
 ```python
 import requests
 import datetime
