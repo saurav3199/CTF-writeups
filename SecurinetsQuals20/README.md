@@ -63,7 +63,7 @@ exit(0)
 
 
 ```
-It popped out the 16 length key : gprzoygsdbfjzaeg
+It popped out the 16 length key : `gprzoygsdbfjzaeg`
 
  
 Then send this key to the server it will give the flag.
