@@ -61,7 +61,6 @@ while len(key)<16:
 print('the final key',key)
 exit(0)
 
-#
 
 ```
 It popped out the 16 length key : gprzoygsdbfjzaeg
