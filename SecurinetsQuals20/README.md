@@ -28,7 +28,7 @@ So let's send the key in headers then see what we can get `Get the fuck outta he
 
 
 So we need to send 16 length key and from the description we get the hint that it's something to do with clock or time. So I realized that its somewhat [Timing Attack](https://en.wikipedia.org/wiki/Timing_attack).
-Then sending the key as of 16 length and check for each character one by one. So the correct character will give the time delay on which we can work.Approximately one second is added for the correct character. 
+Then sending the key as of 16 length and check for each character one by one. So the correct character will give the time delay on which we can work.Approximately one second is added for the correct character comparison. 
 Storing the time delay on which we can select the next possible character. We can optimize it more if you know! :wink:
 
 Here is the [Script](assets/securesafe.py):
