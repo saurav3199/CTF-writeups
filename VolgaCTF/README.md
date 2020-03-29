@@ -20,6 +20,7 @@ Well looking to the server script file, we couldn't find anything vulnerable to 
 
 So I just used some part of the code from there and then made a connection between the netcat server and after 1000 turns we we got the flag. I tried to understand the vulnerability but I couldn't :disappointed:!
 
+Here is the [script](assets/decode.py) :
 ```python
 from pwn import *
 
