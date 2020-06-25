@@ -1,0 +1,24 @@
+probable flag : flag{`;z;/=W|`;Wn9z=|W`<dnW|`;W=;k8flW9=W|`9=}
+probable flag : flag{a:{:.<V}a:Vo8{<}Va=eoV}a:V<:j9gmV8<V}a8<}
+probable flag : flag{b9x9-?U~b9Ul;x?~Ub>flU~b9U?9i:dnU;?U~b;?}
+probable flag : flag{d?~?+9Sxd?Sj=~9xSd8`jSxd?S9?o<bhS=9Sxd=9}
+probable flag : flag{f=|=);Qzf=Qh?|;zQf:bhQzf=Q;=m>`jQ?;Qzf?;}
+probable flag : flag{g<}<(:P{g<Pi>}:{Pg;ciP{g<P:<l?akP>:P{g>:}
+probable flag : flag{h3r3'5_th3_f1r5t_h4lf_th3_53c0nd_15_th15}
+probable flag : flag{i2s2&4^ui2^g0s4u^i5mg^ui2^42b1oe^04^ui04}
+probable flag : flag{j1p1%7]vj1]d3p7v]j6nd]vj1]71a2lf]37]vj37}
+probable flag : flag{k0q0$6\wk0\e2q6w\k7oe\wk0\60`3mg\26\wk26}
+probable flag : flag{l7v7#1[pl7[b5v1p[l0hb[pl7[17g4j`[51[pl51}
+probable flag : flag{m6w6"0Zqm6Zc4w0qZm1icZqm6Z06f5kaZ40Zqm40}
+probable flag : flag{n5t5!3Yrn5Y`7t3rYn2j`Yrn5Y35e6hbY73Yrn73}
+probable flag : flag{o4u4 2Xso4Xa6u2sXo3kaXso4X24d7icX62Xso62}
+probable flag : flag{p+j+?-Glp+G~)j-lGp,t~Glp+G-+{(v|G)-Glp)-}
+probable flag : flag{r)h)=/Enr)E|+h/nEr.v|Enr)E/)y*t~E+/Enr+/}
+probable flag : flag{u.o.:(Biu.B{,o(iBu)q{Biu.B(.~-syB,(Biu,(}
+probable flag : flag{v-l-9+Ajv-Ax/l+jAv*rxAjv-A+-}.pzA/+Ajv/+}
+probable flag : flag{w,m,8*@kw,@y.m*k@w+sy@kw,@*,|/q{@.*@kw.*}
+probable flag : flag{x#b#7%Odx#Ov!b%dOx$|vOdx#O%#s ~tO!%Odx!%}
+probable flag : flag{z!`!5'Mfz!Mt#`'fMz&~tMfz!M'!q"|vM#'Mfz#'}
+probable flag : flag{|'f'3!K`|'Kr%f!`K| xrK`|'K!'w$zpK%!K`|%!}
+probable flag : flag{}&g&2 Ja}&Js$g aJ}!ysJa}&J &v%{qJ$ Ja}$ }
+probable flag : flag{~%d%1#Ib~%Ip'd#bI~"zpIb~%I#%u&xrI'#Ib~'#}
