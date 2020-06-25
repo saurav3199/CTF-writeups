@@ -22,12 +22,13 @@ challenge file : [encrypted.txt](assets/encrypted.txt)
 NOTE: There was a change in challenge statement that key's length does not exceed 128 as it was readable.
 
 #### Tl;dr : This challenge looked impossible to solve once as how can I predict where will '481' occur in the encrypted text so after lot of approaches I finally reach to this one. 
+
 So challenge statement was clear that there is a bunch of xor encrypted base512 characters represented in base10. And there is fixed key1 and key2 because it is part of our flag.
 That means
 ```
 cyclic(key1) ^ cyclic(key2) ^ original_message = given_ciphertext
 ```
-But wait we know the given_ciphertext and we know key1 & key2 and original_message is completely random so there is no way we can get the keys , as for any possible set of keys there can be a valid original message.
+Let the cryptanalysis begin. We know that the given_ciphertext and we know key1 & key2 but original_message is completely random so there is no way we can get the keys , as for any possible set of keys there can be a valid original message.
 
 But there was this catch that make this challenge easier that the alien messages are separated by 481. So think of it like there are bunch of words having length [2-20] consisting of base512 characters delimited by 481.
 Then 481 will occur the most than other possible characters in original message.
