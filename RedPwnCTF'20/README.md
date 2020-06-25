@@ -101,5 +101,5 @@ for i in range(128): # checking for only readable characters
 		if k1.isprintable():
 			print("probable flag : flag{"+k1+k2+"}")
 ```
-We got this [output](scripts/output.txt) here
+We got this [output](assets/output.txt) here
 > Flag : flag{h3r3'5_th3_f1r5t_h4lf_th3_53c0nd_15_th15}
