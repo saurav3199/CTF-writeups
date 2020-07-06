@@ -9,8 +9,8 @@ We tried to solve challenges as much as possible we can and as a result we secur
 As you can see from the image we lacks in binary exploitation or pwn challenges field.If anyone interested can contact us :smiley:.
 
 
-Challenge  Name | Points | Flag
------------- | ------------- | ---------------
+Challenge  Name    | Points           | Flag
+------------------ | -----------------| ------------------------
  [A Simple Conversation](#a-simple-conversation-)| 158| hsctf{plz_u5e_pyth0n_3}
  |[Broken Repl](#broken_repl-) | 407| hsctf{dont_you_love_parsers}
  |[Hidden Flag](#hidden-flag-) | 290 | hsctf{n0t_1nv1s1bl3_an5m0r3?-39547632}
