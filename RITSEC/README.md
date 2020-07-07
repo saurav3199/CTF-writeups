@@ -275,7 +275,8 @@ So starting bits are PK i.e. zip and then a jpg file inside it too . So let's gr
 As expected then again on stego analysis we get [garbage in zip](scripts/13E09.zip) `Zip archive data, at least v1.0 to extract, compressed size: 49, uncompressed size: 49, name: garbage`
 
 So on looking into garbage which isn't really a grabage string 
-```952bpNXY25WS51mcBt2Y1RUZoR1bUVWbvNGbld1eDV0UUlkU```
+`952bpNXY25WS51mcBt2Y1RUZoR1bUVWbvNGbld1eDV0UUlkU`
+
 If you see it reverse order which is the flag:
 
 Here is your flag: `RITSEC{WelcomeToTheDuckArmyInvasion}`
