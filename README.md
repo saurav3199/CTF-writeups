@@ -9,7 +9,7 @@ as a team member of team [ByteForc3](https://ctftime.org/team/71631)
 
 * [RedPwn CTF 2020](RedPwnCTF'20/)
 * [Securinets Quals 2020](SecurinetsQuals20/)
-* [HSCTF6](HSCTF6/)
+* [HSCTF6 2019](HSCTF6/)
 * [Crypto CTF 2019](CryptoCTF/)
 * [Volga CTF 2020](VolgaCTF/)
 * [TAMU CTF 2019](TAMUctf19/)
