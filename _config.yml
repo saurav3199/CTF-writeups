@@ -30,3 +30,8 @@ share-links-active:
   linkedin: true
 
 theme: jekyll-theme-hacker
+
+plugins:
+  - jemoji
+  - jekyll-paginate
+  - jekyll-sitemap
