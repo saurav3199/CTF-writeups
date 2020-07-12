@@ -1,4 +1,4 @@
-theme: jekyll-theme-hacker
+
 
 url: "https://saurav3199.github.io/writeups"
 baseurl: "/writeups"
@@ -33,3 +33,4 @@ author:
   google: false
   linkedin: true
  
+ theme: jekyll-theme-hacker
