@@ -1,1 +1,35 @@
 theme: jekyll-theme-hacker
+
+url: "https://saurav3199.github.io/writeups"
+baseurl: "/writeups"
+
+title: CTF-Writeups
+description: writeups for the past CTF challenges
+
+
+navbar-col: "#000"
+navbar-text-col: "#FFF"
+navbar-children-col: "#000"
+page-col: "#151515"
+link-col: "#008AFF"
+hover-col: "#0085A1"
+footer-col: "#000"
+footer-text-col: "#FFF"
+footer-link-col: "#404040"
+
+author:
+  name: Saurav Kumar Singh
+  
+ social-network-links:
+  rss: false
+  email: "saurav.co.in.com@gmail.com"
+  facebook: saurav3199
+  github: saurav3199
+  twitter: streaker_rules
+  
+ share-links-active:
+  twitter: true
+  facebook: true
+  google: false
+  linkedin: true
+ 
