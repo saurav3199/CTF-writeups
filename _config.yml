@@ -14,18 +14,19 @@ footer-link-col: "#404040"
 
 author:
   name: "Saurav Kumar Singh"
-  
- social-network-links:
+
+
+social-network-links:
   rss: false
   email: "saurav.co.in.com@gmail.com"
   facebook: saurav3199
   github: saurav3199
   twitter: streaker_rules
-  
- share-links-active:
+
+share-links-active:
   twitter: true
   facebook: true
   google: false
   linkedin: true
- 
+
 theme: jekyll-theme-hacker
