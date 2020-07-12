@@ -1,8 +1,5 @@
-url: "https://saurav3199.github.io/writeups"
-baseurl: "/writeups"
-
-title: CTF-Writeups
-description: writeups for the past CTF challenges
+title: "CTF-Writeups"
+description: "Writeups for the past CTF challenges"
 
 
 navbar-col: "#000"
@@ -16,7 +13,7 @@ footer-text-col: "#FFF"
 footer-link-col: "#404040"
 
 author:
-  name: Saurav Kumar Singh
+  name: "Saurav Kumar Singh"
   
  social-network-links:
   rss: false
