@@ -1,3 +1,9 @@
+[![GitHub license](https://img.shields.io/github/license/saurav3199/CTF-writeups?style=flat-square)](https://github.com/saurav3199/CTF-writeups/blob/master/LICENSE.md)
+[![GitHub forks](https://img.shields.io/github/forks/saurav3199/CTF-writeups?style=flat-square)](https://github.com/saurav3199/CTF-writeups/network)
+[![GitHub stars](https://img.shields.io/github/stars/saurav3199/CTF-writeups?style=flat-square)](https://github.com/saurav3199/CTF-writeups/stargazers)
+
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fsaurav3199%2FCTF-writeups)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fsaurav3199%2FCTF-writeups)
+
 Collection of past CTF writeups as a team member of team [ByteForc3](https://ctftime.org/team/71631)
 
 > Things I've learned and suspect I'll forget. :bowtie:
