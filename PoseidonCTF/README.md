@@ -76,7 +76,7 @@ Let's get p & q.
 >> n = p**4 + (2**256+x)*p*p
 ```
 
-There is a trick to calculate p easily because 2^256 + x is very small compared 1024 bit modulus prime. so we can ignore it and calculate `p as fourth_root(n)`
+There is a trick to calculate p easily because 2^256 + x is very small compared 1024 bit modulus prime. So we can ignore it and calculate `p as fourth_root(n)`
 Why? 
 Let's prove it:
 So we are stating that : p^4 < n < (p+1)^4.
@@ -87,7 +87,7 @@ So we are stating that : p^4 < n < (p+1)^4.
 >> 4*p**3 -(2**256-4+x)*p*p +p
 >> (4*p - 2**256 -4 + x )p*p +p > 0
 ```
-P is a 1024 bit modulus so its greater that 2^256 and for x refer [Prime gaps](https://en.wikipedia.org/wiki/Prime_gap) : which tells that x is around 1000 only.
+P is a 1024 bit modulus so its greater than 2^256 and for x refer [Prime gaps](https://en.wikipedia.org/wiki/Prime_gap) : which tells that x is around 1000 only.
 
 So lets script it :
 
