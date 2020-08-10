@@ -78,7 +78,7 @@ Let's get p & q.
 
 There is a trick to calculate p easily because 2^256 + x is very small compared 1024 bit modulus prime. so we can ignore it and calculate `p as fourth_root(n)`
 Why? 
-Let's proof it:
+Let's prove it:
 So we are stating that : p^4 < n < (p+1)^4.
 ```
 >> (p+1)**4 - n
