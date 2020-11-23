@@ -9,7 +9,7 @@ Flip bits and decrypt communication between Bob and Alice.
 
 `nc bitflip1.hackable.software 1337`
 
-[task.tgz](assets/tasks.tgz)
+[task.tgz](assets/task.tgz)
 
 
 ```python
@@ -143,7 +143,6 @@ as the difference between them is 2 so we will have one less iteration count if 
 Solution [script](/solve.py):
 
 In beginning we have to solve POW which is same as asked in [GoogleCTF'17](https://github.com/google/google-ctf/blob/master/2017/quals/2017-pwn-cfi/challenge/hashcash.py).
-
 ```python
 from pwn import *
 from base64 import *

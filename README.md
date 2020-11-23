@@ -12,6 +12,7 @@ Collection of past CTF writeups as a team member of team [ByteForc3](https://ctf
 
 ## List of Writeups:
 
+* [DragonSector CTF 2020](DragonSectorCTF/)
 * [Google CTF 2020](GoogleCTF'20/)
 * [Poseidon CTF 2020](PoseidonCTF/)
 * [RedPwn CTF 2020](RedPwnCTF'20/)
