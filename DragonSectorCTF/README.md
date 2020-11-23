@@ -213,3 +213,5 @@ b'XI\x18T\x1c\xd0m\x81\xc8\x06=\xb81\x93\xa9\x01X\xb3}\xf06\xea\xf2\x95_\x87E\xa
 
 Here is our flag: `DrgnS{T1min9_4ttack_f0r_k3y_generation}`
 Voila!
+
+PS: Yeah the count of iteration indicates the time used for generating the prime.
